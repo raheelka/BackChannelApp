@@ -3,6 +3,10 @@
   <%= csrf_meta_tag %></head>
 <h1>Showing all posts</h1>
 <% @posts.each do |poster| %>
-    <div> <%=poster.content %>  -- <%=poster.user.first_name %> <%=poster.user.last_name %>
-      <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %></div>
+    <div> <%=poster.content %>  -- <%=poster.user.first_name %> <%=poster.user.last_name %>   </div>
+      <% if current_user==poster.user %>
+        <div>
+        <%= link_to 'Edit', edit_post_path(poster) %>
+        <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %></div>
+      <%end%>
 <% end %>

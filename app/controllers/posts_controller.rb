@@ -23,4 +23,17 @@ class PostsController < ApplicationController
   def index
     @posts=Post.all
   end
+
+  def edit
+    @post=Post.find(params[:id])
+  end
+
+  def update
+       @post=Post.find(params[:id])
+      if @post.update(params[:post].permit(:content))
+        flash[:success] = "Post Edited Successfully!"
+        redirect_to root_path
+      end
+  end
+
 end

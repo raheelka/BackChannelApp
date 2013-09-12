@@ -12,12 +12,22 @@
       Logged in as <%= current_user.email %>  <br/>
       <%= link_to "New Post", new_post_path %>
       <%= link_to "All Posts", all_post_path %>
-      <%= link_to "Log out", log_out_path %>
+      <%= link_to "Log out", log_out_path %>      <br/>
+
   <% else %>
       <%= link_to "Sign up", sign_up_path %> /
       <%= link_to "Log in", log_in_path %>    /
-      <%= link_to "All Posts", all_post_path %>
+      <%= link_to "All Posts", all_post_path %>     <br/>
+
+
   <% end %>
+  <%= form_tag url_for(:controller => :posts, :action => :search) do %>
+      <tr><td align="right" style="position: absolute; left: 500px; top:40px">   <%= search_field_tag :s %>
+        <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent'])%>
+      </td> </tr>
+
+      </p>
+  <% end  %>
 
 </div>
 <% flash.each do |name, msg| %>

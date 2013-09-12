@@ -36,4 +36,10 @@ class PostsController < ApplicationController
       end
   end
 
+  def search
+
+    @posts=Post.where(category: params[:s]).all
+
+  end
+
 end

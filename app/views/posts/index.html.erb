@@ -3,7 +3,7 @@
   <%= csrf_meta_tag %></head>
 <h1>Showing all posts</h1>
 <% @posts.each do |poster| %>
-    <div> <%=poster.content %>  -- <%=poster.user.first_name %> <%=poster.user.last_name %>   </div>
+    <div><b>Category:</b> <%= poster.category %> |<b> Content: </b><%=poster.content %>  --> <%=poster.user.first_name %> <%=poster.user.last_name %>   </div>
       <% if current_user==poster.user %>
         <div>
         <%= link_to 'Edit', edit_post_path(poster) %>

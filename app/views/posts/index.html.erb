@@ -1,0 +1,8 @@
+<head><%= javascript_include_tag "rails" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %></head>
+<h1>Showing all posts</h1>
+<% @posts.each do |poster| %>
+    <div> <%=poster.content %>  -- <%=poster.user.first_name %> <%=poster.user.last_name %>
+      <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %></div>
+<% end %>

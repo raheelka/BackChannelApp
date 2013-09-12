@@ -38,7 +38,13 @@ class PostsController < ApplicationController
 
   def search
 
-    @posts=Post.where(category: params[:s]).all
+    if params[:selectSearch] == "searchContent"
+      @posts=Post.where(category: params[:s]).all
+    else
+      @user= User.find_all_by_first_name(params[:s])
+      @posts=Post.where(user_id: @user).all
+    end
+
 
   end
 

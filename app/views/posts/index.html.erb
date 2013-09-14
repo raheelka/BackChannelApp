@@ -1,12 +1,16 @@
 <head><%= javascript_include_tag "rails" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %></head>
-<h1>Showing all posts</h1>
-<% @posts.each do |poster| %>
-    <div><b>Category:</b> <%= poster.category %> |<b> Content: </b><%=poster.content %>  --> <%=poster.user.first_name %> <%=poster.user.last_name %>   </div>
-      <% if current_user==poster.user %>
-        <div>
-        <%= link_to 'Edit', edit_post_path(poster) %>
-        <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %></div>
-      <%end%>
-<% end %>
+<h1>Showing All Posts</h1>
+<table border=1>
+  <tr><th>Category</th> <th>Content</th> <th>Posted By </th></tr>
+  <% @posts.each do |poster| %>
+      <tr> <td><%= poster.category %></td> <td><%=poster.content %> </td>
+        <td><%=poster.user.first_name %> <%=poster.user.last_name %>
+          <% if current_user==poster.user %>
+              <%= link_to 'Edit', edit_post_path(poster) %>
+              <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %>
+          <%end%></td></tr>
+
+  <% end %>
+</table>

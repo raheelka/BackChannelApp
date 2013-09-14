@@ -9,7 +9,7 @@
 <body>
 <div id="user_nav">
   <% if current_user %>
-      Logged in as <%= current_user.email %>  <br/>
+      Logged in as <%= current_user.first_name %>   <br/>
       <%= link_to "New Post", new_post_path %>
       <%= link_to "All Posts", all_post_path %>
       <%= link_to "Log out", log_out_path %>      <br/>
@@ -23,7 +23,7 @@
   <% end %>
   <%= form_tag url_for(:controller => :posts, :action => :search) do %>
       <tr><td align="right" style="position: absolute; left: 500px; top:40px">   <%= search_field_tag :s %>
-        <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent'])%>
+        <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent','searchCategory'])%>
       </td> </tr>
 
       </p>

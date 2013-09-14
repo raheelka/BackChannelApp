@@ -46,6 +46,16 @@ class PostsController < ApplicationController
            @posts << post
          end
        end
+    elsif  params[:selectSearch] == "searchCategory"
+      @posts = Array.new
+      Post.all.each do
+      |post|
+        if post.category
+        if post.category.upcase.index(params[:s].upcase)        # Doing this to compare without case
+          @posts << post
+        end
+        end
+      end
     else
       @user= User.find_all_by_first_name(params[:s])
       @posts=Post.where(user_id: @user).all

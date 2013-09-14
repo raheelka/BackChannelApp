@@ -39,8 +39,6 @@ class PostsController < ApplicationController
   def search
 
     if params[:selectSearch] == "searchContent"
-     # @posts=Post.where('category LIKE ?', '%params[:s]%').all
-     #  @posts=Post.where(category: params[:s]).all
        @posts = Array.new
        Post.all.each do
        |post|

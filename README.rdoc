@@ -1,28 +1,78 @@
-== README
+CSC/ECE 517, Fall 2013
+Program 1: Backchannel app
+Due Friday, September 27
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This semester, as you know, we’re employing a backchannel during class in CSC/ECE 517.  However, as we use Live Question, we have realized that it has some important limitations.
+You can’t search for posts.
+Users do not need to log in to post a question, leaving the system open for potential spam.
+There’s no easy way to figure out how many posts an individual has done. There is no defined “handle” or “account”.
+The topics with maximum number of votes appear on top. This leads to the following problem:
+A topic posted at the very beginning of the course can receive a large number of votes. That topic will continue to remain on top even though it becomes less relevant as we progress in the course. In short, the relevance of a topic is decided only by the number of votes and not by time.
+Admin functionality is extremely limited. No per-user or aggregate statistics are collected.
 
-Things you may want to cover:
+Using Ruby on Rails, we will create an app to address these shortcomings.
 
-* Ruby version
+Features
+Anyone can create an account by filling out a form that comes up on the homepage of the app.
+Any user with an account can post. A category must be associated with each post; students can select from categories created by the administrator. Students are also welcome to create and use their own tags.
+Anyone (account or not) can search by user or content or category or tag, by using the Search box on the homepage. Also, (s)he can see all posts associated with that category when (s)he searches by category. This way if the category is homework1 user can see all posts associated with homework1.
+Any logged-in user can edit/delete their own post/comment.
+Any logged-in user can “up vote” any post or comment.
+The system maintains a count of votes for each post.
+When the system displays a post or comment, next to the post or comment should be the number of votes.
+You cannot vote up your own posts or comment.
+You cannot vote up the same post or comment more than once.
+Any logged-in user can reply to a post (but not to a reply; i.e., only to a depth of 1).
+                  a.   A user can also vote up a reply (by someone else).
+The “most active” questions are displayed at the top. “Most active” is determined by the combined number of votes on the posts and comments on that post, as well as time elapsed.  For example, you can assign each question a fixed weight, which decays over time. Use this weight along with the number of votes to calculate the final metric which decides the most active questions.  Feel free to design your own metric, along these general lines.  For example, you may wish to use a metric which eventually decays to 0, at which time the question is hidden.
+If a user logs in as an admin, (s)he sees a different interface from what non-admins see.
+There should be a ‘super’ admin in system that his role of admin cannot be removed. There should be code to handle that this user cannot be deleted
+Administrators can create other admin accounts.
+An administrator can delete his/her own account, but no one other admin’s.
+Administrators can see the list of users with their credentials
+Administrators can delete
+posts
+users
+View reports on post activity during certain time period, including number of votes for each post such that it is possible to use this report to assign grades. For example, an admin can view reports from past 10/15/... days.
+An administrator can create categories for posts.  .
+Tables
+Tables must not be created directly in SQLite. Instead, you must use the db:migrate functionality of rails to create your database tables. Recall that Rails creates three versions of each db: production, testing, and development.  You should have a test target that populates the database with sufficient sample data to allow for testing. You should also have a production target that initializes the database in an empty state. The use of the development target is left up to you (you don’t have to submit one).
 
-* System dependencies
+We expect your application to have at least the following tables:
+users
+posts
+votes (this is a join table between users and posts)
+category
+Testing
+You must submit unit, functional and integration tests for all classes.  The tests must cover all important branches of the code.  You may use Test::Unit or, for extra credit, RSpec.  If you use one of the GUI testing frameworks (such as Webrat) covered in Lecture 9, you will receive 10% extra credit.
 
-* Configuration
+Software Requirements
+You are required to use the following versions:
+Ruby 1.9.3
+Rails 3.x (and associated dependencies). Do not use Rails 2.x for this project.
+SQLite 3.7.2 (on Windows, place the DLL and DEF file in C:\Ruby192\bin)
 
-* Database creation
+Do not use any additional Ruby Gems without explicit approval from  csc517-sup@wolfware.ncsu.edu.  During the course of the project, you will be assigned a port number. Your Ruby on Rails application must run using the following command:
 
-* Database initialization
+ruby script/server server -p port
 
-* How to run the test suite
+where port is your assigned port. Until you are assigned a port you can use the default port of 3000. During server initialization, you will be presented with a message similar to the following:
 
-* Services (job queues, cache servers, search engines, etc.)
+=> Rails 3 application starting on http://0.0.0.0:3001
 
-* Deployment instructions
+You can use this to verify that you have the correct version of Rails.
+Deliverables
+Test your code in a VCL image, to be specified later.
+Submit the program code, including internal documentation in the form of comments and a README file via Expertiza.
 
-* ...
+For Assignment #1, you need to submit two files to Prog_Assigment_1 for CSC 517 on Wolfware:
+The first is a zip file containing your entire Rails project.
+The second is a README file with the following details:
+Individuals working on this project (include both names and unity IDs).  If you worked alone, just include your name and unity ID
+Which test framework (Test::Unit or RSpec) you are using
+Starting URL for the application.  This should generally be http://127.0.0.1:3000 for execution on your own computer (however, you will be given a different port number to run on the VCL server or if you are using Heroku the starting URL for the deployed app).
+Command(s) to run to start the app
+Other notes (extra credit functionality implemented, limitations, etc.)
 
+Only one team member should submit the project to Wolfware!  (Yes, even if you resubmit!  Submissions of the same project under multiple IDs just confuse the course staff, and may cause an outdated version of the program to be graded.)
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.

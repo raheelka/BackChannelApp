@@ -39,11 +39,21 @@ class PostsController < ApplicationController
   def search
 
     if params[:selectSearch] == "searchContent"
-      @posts=Post.where(category: params[:s]).all
+     # @posts=Post.where('category LIKE ?', '%params[:s]%').all
+     #  @posts=Post.where(category: params[:s]).all
+       @posts = Array.new
+       Post.all.each do
+       |post|
+         if post.content.upcase.index(params[:s].upcase)        # Doing this to compare without case
+           @posts << post
+         end
+       end
     else
       @user= User.find_all_by_first_name(params[:s])
       @posts=Post.where(user_id: @user).all
     end
+
+    @posts
 
 
   end

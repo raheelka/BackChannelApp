@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.authenticate(email, password)
-    user = find_by_email(email)
+  def self.authenticate(email_or_username, password)
+    user = find_by_username(email_or_username) || find_by_email(email_or_username)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
       user
     else

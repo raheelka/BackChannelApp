@@ -56,8 +56,8 @@ class PostsController < ApplicationController
         end
         end
       end
-    else
-      @user= User.find_all_by_first_name(params[:s])
+    else      # Search by user (For now simply user's first name)
+      @user = User.where(:first_name => params[:s])
       @posts=Post.where(user_id: @user).all
     end
 

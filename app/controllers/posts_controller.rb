@@ -57,8 +57,18 @@ class PostsController < ApplicationController
         end
       end
     else      # Search by user (For now simply user's first name)
-      @user = User.where(:first_name => params[:s])
-      @posts=Post.where(user_id: @user).all
+      @posts = Array.new
+      User.all.each do
+      |user|
+          if user.first_name.upcase.index(params[:s].upcase) || user.last_name.upcase.index(params[:s].upcase)        # Doing this to compare without case
+            all_posts_of_user = Post.where(user_id: user).all
+             all_posts_of_user.each do
+               |user_post|
+                @posts << user_post
+             end
+          end
+
+      end
     end
 
     @posts

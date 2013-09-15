@@ -51,11 +51,20 @@ class PostsController < ApplicationController
       Post.all.each do
       |post|
         if post.category
-        if post.category.upcase.index(params[:s].upcase)        # Doing this to compare without case
+        if post.category.upcase.index(params[:s].upcase)      # Doing this to compare without case
           @posts << post
         end
         end
+
+        if post.tag
+          if post.tag.upcase.index(params[:s].upcase)      # Doing this to compare without case
+            @posts << post
+          end
+        end
+
       end
+      @posts=@posts.uniq
+
     else      # Search by user (For now simply user's first name)
       @posts = Array.new
       User.all.each do
@@ -71,7 +80,7 @@ class PostsController < ApplicationController
       end
     end
 
-    @posts
+
 
 
   end

@@ -1,6 +1,7 @@
 Auth::Application.routes.draw do
 
 
+
   get "all_post" => "posts#index", :as => "all_post"
   get "new_post" => "posts#new", :as => "new_post"
   get "log_in" => "sessions#new", :as => "log_in"
@@ -12,4 +13,5 @@ Auth::Application.routes.draw do
   resources :users
   resources :sessions
   resources :posts
+  resources :category_reps
 end

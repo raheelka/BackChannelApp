@@ -7,7 +7,7 @@
   <% @posts.each do |poster| %>
       <tr> <td><%= poster.category %></td> <td><%=poster.content %> </td>
         <td><%=poster.user.first_name %> <%=poster.user.last_name %>
-          <% if (current_user==poster.user || current_user==admin_user)%>
+          <% if current_user==poster.user || current_user==admin_user%>
               <%= link_to 'Edit', edit_post_path(poster) %>
               <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %>
           <%end%></td></tr>

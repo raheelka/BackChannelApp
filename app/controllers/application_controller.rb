@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :full_name
   helper_method :admin_user
+  helper_method :all_cats
 
   private
   def current_user
@@ -20,5 +21,15 @@ class ApplicationController < ActionController::Base
     @admin_user = User.find_by_username("admin")
   end
 
+  def all_cats
+    @all_cats = Array.new
+    CategoryRep.all.each do
+    |categ|
+      if categ.category
+       @all_cats << categ.category
+      end
+    end
+    @all_cats
+  end
 
 end

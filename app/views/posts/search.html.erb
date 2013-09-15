@@ -3,9 +3,9 @@
   <%= csrf_meta_tag %></head>
 <h1>Showing Posts by Search Filter</h1>
 <table border=1>
-  <tr><th>Category</th> <th>Content</th> <th>Posted By </th></tr>
-  <% @posts.each do |poster| %>
-      <tr> <td><%= poster.category %></td> <td><%=poster.content %> </td>
+  <tr><th>Category</th> <th>Tag</th> <th>Content</th> <th>Posted By </th></tr>
+  <% @posts.each do |poster| %><
+      <tr> <td><%= poster.category %></td><td><%= poster.tag  %></td> <td><%=poster.content %> </td>
         <td><%=poster.user.first_name %> <%=poster.user.last_name %>
           <% if current_user==poster.user || current_user==admin_user%>
               <%= link_to 'Edit', edit_post_path(poster) %>

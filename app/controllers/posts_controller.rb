@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(params[:post].permit(:content, :category))
+    @post = current_user.posts.build(params[:post].permit(:content, :category, :tag))
     @post.weight = 1000
     if @post.save
       flash[:success] = "Post created!"
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
        @post=Post.find(params[:id])
-      if @post.update(params[:post].permit(:content, :category))
+      if @post.update(params[:post].permit(:content, :category, :tag))
         flash[:success] = "Post Edited Successfully!"
         redirect_to root_path
       end

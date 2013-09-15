@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :full_name
+  helper_method :admin_user
 
   private
   def current_user
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   def full_name
      @full_name = @current_user.first_name + " " + @current_user.last_name
+  end
+
+  def admin_user
+    @admin_user = User.find_by_username("admin")
   end
 
 

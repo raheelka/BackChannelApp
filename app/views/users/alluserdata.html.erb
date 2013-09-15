@@ -1,0 +1,15 @@
+<head><%= javascript_include_tag "rails" %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %></head>
+<h1>Showing All Users</h1>
+<table border=1>
+  <tr><th>First Name</th> <th>Last Name</th> <th>Email </th>
+    <th>Username</th> <th>Password Hash </th> <th>Password Salt</th></tr>
+  <% @users.each do |user| %>
+      <tr> <td><%= user.first_name %></td> <td><%=user.last_name %> </td>
+        <td><%=user.email %></td> <td><%=user.username %> </td>
+        <td><%=user.password_hash %></td> <td><%=user.password_salt %> </td>
+      </tr>
+
+  <% end %>
+</table>

@@ -17,10 +17,15 @@
   <% else %>
       <%= link_to "Sign up", sign_up_path %> /
       <%= link_to "Log in", log_in_path %>    /
-      <%= link_to "All Posts", all_post_path %>     <br/>
+      <%= link_to "All Posts", all_post_path %>
+      <br/>
 
 
   <% end %>
+  <% if current_user == admin_user %>
+      <%= link_to "All users", all_users_path %>
+  <% end %>
+
   <%= form_tag url_for(:controller => :posts, :action => :search) do %>
       <tr><td align="right" style="position: absolute; left: 500px; top:40px">   <%= search_field_tag :s %>
         <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent','searchCategory'])%>

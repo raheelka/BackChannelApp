@@ -11,4 +11,9 @@ class UsersController < ApplicationController
     render "new"
     end
   end
+
+  def alluserdata
+    @users=User.all
+  end
+
 end

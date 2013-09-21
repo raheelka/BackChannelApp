@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user=User.new(params[:user].permit(:first_name, :last_name, :username, :email, :password, :password_confirmation))
+    @user.user_type="user"
     if @user.save
       redirect_to root_url, :notice => "Signed up!"
     else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921170751) do
+ActiveRecord::Schema.define(version: 20130921171310) do
 
   create_table "category_reps", force: true do |t|
     t.string   "category"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20130921170751) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
+    t.string   "user_type"
   end
 
 end

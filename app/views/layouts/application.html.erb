@@ -22,7 +22,7 @@
 
 
   <% end %>
-  <% if current_user == admin_user %>
+  <% if current_user!=nil && current_user == admin_user %>
       <%= link_to "All users", all_users_path %>
       <%= link_to "Manage Categories", :controller => "category_reps", :action => "index" %>
   <% end %>

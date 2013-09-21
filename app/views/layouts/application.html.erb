@@ -25,6 +25,7 @@
   <% if current_user!=nil && (current_user == admin_user || current_user == super_admin_user) %>
       <%= link_to "All users", all_users_path %>
       <%= link_to "Manage Categories", :controller => "category_reps", :action => "index" %>
+      <%= link_to "Create Admin", :controller => "users",  :action => "createAdmin" %>
   <% end %>
 
   <%= form_tag url_for(:controller => :posts, :action => :search) do %>

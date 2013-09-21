@@ -17,4 +17,20 @@ class UsersController < ApplicationController
     @users=User.all
   end
 
+  def createAdmin
+    @user=User.new
+  end
+
+  def saveAdmin
+    @user=User.new(params[:user].permit(:first_name, :last_name, :username, :email, :password, :password_confirmation))
+    @user.user_type="admin"
+    if @user.save
+      redirect_to root_url, :notice => "Admin Created!"
+    else
+      render "new"
+    end
+  end
+
+
+
 end

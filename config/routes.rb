@@ -8,6 +8,8 @@ Auth::Application.routes.draw do
   get "sign_up" => "users#new", :as => "sign_up"
   get "all_users" => "users#alluserdata", :as => "all_users"
   get "log_out" => "sessions#destroy", :as => "log_out"
+  get "users/createAdmin"
+  post "users/saveAdmin"
   post "posts/search"
   root :to => "users#new"
   resources :users

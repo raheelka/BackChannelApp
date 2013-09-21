@@ -34,6 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user= User.find(params[:id])
+    session[:user_id] = nil   # This should be done by calling the destroy method of sessions controller :(
     @user.destroy
     redirect_to root_path, :notice => "User deleted!"
   end

@@ -4,7 +4,7 @@ class CategoryRepsController < ApplicationController
   # GET /category_reps
   # GET /category_reps.json
   def index
-    if current_user==admin_user
+    if (current_user==admin_user || current_user==super_admin_user)
     @category_reps = CategoryRep.all
     else
       redirect_to root_path
@@ -19,7 +19,7 @@ class CategoryRepsController < ApplicationController
 
   # GET /category_reps/new
   def new
-    if current_user==admin_user
+    if (current_user==admin_user || current_user==super_admin_user)
     @category_rep = CategoryRep.new
     else
       redirect_to root_path
@@ -28,7 +28,7 @@ class CategoryRepsController < ApplicationController
 
   # GET /category_reps/1/edit
   def edit
-    if current_user != admin_user
+    if (current_user !=admin_user && current_user !=super_admin_user)
     redirect_to root_path
     end
 

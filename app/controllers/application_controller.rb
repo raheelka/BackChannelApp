@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :full_name
   helper_method :admin_user
+  helper_method :super_admin_user
   helper_method :all_cats
 
   private
@@ -18,7 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    @admin_user = User.find_by_username("admin")
+    @admin_user = User.find_by_user_type("admin")
+  end
+
+  def super_admin_user
+    @super_admin_user = User.find_by_user_type("superadmin")
   end
 
   def all_cats

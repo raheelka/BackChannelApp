@@ -19,11 +19,19 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_user
-    @admin_user = User.find_by_user_type("admin")
+    if current_user.user_type=="admin"
+    @admin_user = current_user
+    else
+      @admin_user=nil
+      end
   end
 
   def super_admin_user
-    @super_admin_user = User.find_by_user_type("superadmin")
+    if current_user.user_type=="superadmin"
+    @super_admin_user = current_user
+    else
+      @super_admin_user=nil
+      end
   end
 
   def all_cats

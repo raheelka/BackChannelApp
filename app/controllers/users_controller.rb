@@ -14,7 +14,12 @@ class UsersController < ApplicationController
   end
 
   def alluserdata
-    @users=User.all
+    if current_user.user_type!="admin" && current_user.user_type!="superadmin"
+      redirect_to root_url, :notice => "You are not authorized"
+    else
+      @users=User.all
+    end
+
   end
 
   def createAdmin
@@ -29,6 +34,16 @@ class UsersController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def promoteToAdmin
+    @user=User.find(params[:id])
+    @user.user_type="admin"
+    if @user.save
+      redirect_to root_url, :notice => "Promoted to Admin!"
+    end
+
+
   end
 
 

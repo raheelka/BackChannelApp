@@ -10,6 +10,7 @@ Auth::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "users/createAdmin"
   post "users/saveAdmin"
+  post "users/promoteToAdmin"
   post "posts/search"
   root :to => "users#new"
   resources :users

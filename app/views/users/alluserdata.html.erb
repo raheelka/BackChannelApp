@@ -15,10 +15,15 @@
         <% if user.user_type!="admin" && user.user_type!="superadmin" %>
         <td>
           <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
+
+          <%= button_to "Promote To Admin", {:action => "promoteToAdmin", id: user} %>
         </td>
                 <% end %>
 
         <% end %>
+
+
+
 
         <% if current_user.id == user.id %>
             <td>

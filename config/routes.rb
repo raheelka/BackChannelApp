@@ -12,6 +12,7 @@ Auth::Application.routes.draw do
   post "users/saveAdmin"
   post "users/promoteToAdmin"
   post "posts/search"
+  get "users/viewReport"
   root :to => "users#new"
   resources :users
   resources :sessions

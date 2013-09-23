@@ -46,6 +46,10 @@ class UsersController < ApplicationController
 
   end
 
+  def viewReport
+    @posts=Post.all
+  end
+
 
   def destroy
     @user= User.find(params[:id])

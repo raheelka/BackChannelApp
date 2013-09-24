@@ -5,32 +5,34 @@
 <table border=1>
   <tr><th>First Name</th> <th>Last Name</th> <th>Email </th>
     <th>Username</th> <th>Password Hash </th> <th>Password Salt</th>
-  <th>Type</th><th>Actions</th></tr>
+    <th>Type</th><th>Actions</th></tr>
   <% @users.each do |user| %>
       <tr> <td><%= user.first_name %></td> <td><%=user.last_name %> </td>
         <td><%=user.email %></td> <td><%=user.username %> </td>
         <td><%=user.password_hash %></td> <td><%=user.password_salt %> </td>
         <td><%=user.user_type %></td>
-        <% if current_user==admin_user || current_user==super_admin_user  %>
-        <% if user.user_type!="admin" && user.user_type!="superadmin" %>
+
         <td>
-          <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
+          <% if current_user==admin_user || current_user==super_admin_user  %>
 
-          <%= button_to "Promote To Admin", {:action => "promoteToAdmin", id: user} %>
-        </td>
-                <% end %>
+              <% if user.user_type!="admin" && user.user_type!="superadmin" %>
+                  <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
+                  <%= button_to "Promote To Admin", {:action => "promoteToAdmin", id: user} %>
+              <% end %>
 
-        <% end %>
+              <% if current_user==super_admin_user %>
+                  <% if user.user_type=="admin" %>
+                      <%= button_to "Revoke Admin Rights", {:action => "revokeAdmin", id: user} %>
+                  <% end %>
+              <% end %>
 
+          <% end %>
 
-
-
-        <% if current_user.id == user.id %>
-            <td>
+          <% if current_user.id == user.id && user.user_type!="superadmin"%>
               <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
-            </td>
-        <% end %>
+          <% end %>
 
+        </td>
       </tr>
 
   <% end %>

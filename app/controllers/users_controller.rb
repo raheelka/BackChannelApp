@@ -42,8 +42,14 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, :notice => "Promoted to Admin!"
     end
+  end
 
-
+  def revokeAdmin
+    @user=User.find(params[:id])
+    @user.user_type="user"
+    if @user.save
+      redirect_to root_url, :notice => "Revoked Admin Rights!"
+    end
   end
 
   def viewReport

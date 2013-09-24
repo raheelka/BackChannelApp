@@ -13,6 +13,7 @@ Auth::Application.routes.draw do
   get "users/createAdmin"
   post "users/saveAdmin"
   post "users/promoteToAdmin"
+  post "users/revokeAdmin"
   post "posts/search"
   get "users/viewReport"
   post "users/viewReport"

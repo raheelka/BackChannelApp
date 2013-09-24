@@ -55,7 +55,22 @@ class UsersController < ApplicationController
     @posts=Post.where({ created_at: ten_days_ago..Time.zone.now.end_of_day})
 
 
+
+
   end
+
+  def viewReportAj
+    # This is to get posts some days back
+    require 'date'
+    now = Date.today
+    ten_days_ago = (now - params[:daysback].to_i)
+
+    @posts=Post.where({ created_at: ten_days_ago..Time.zone.now.end_of_day})
+
+    # Rendering the partial form. Done for ajax loading of this partial inside viewReport.html.erb
+    render :partial => "viewReportPar"
+
+   end
 
 
   def destroy

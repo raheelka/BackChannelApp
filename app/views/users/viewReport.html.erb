@@ -1,19 +1,31 @@
 <head>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %></head>
-<%= form_tag({controller: "users", action: "viewReport"}, method: "post") do %>
-    <%= label_tag(:q, "Search for posts :") %>
-    <%= text_field_tag(:q) %> days back
-    <%= submit_tag("Search") %>
-<% end %>
+
+Search for posts from past <input type="text" id="days" class="daysClass"> days
+<input type=button id="reportButton" class="buttonClass" value="search">
 
 <h1>Showing All Posts</h1>
-<table border=1>
-  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th></tr>
-  <% @posts.each do |poster| %>
-      <tr> <td><%= poster.category %></td><td><%= poster.tag %></td> <td><%=poster.content %> </td>
-        <td><%=poster.user.first_name %> <%=poster.user.last_name %></td>
-          </tr>
+<div class='up' id="up"></div>
 
-  <% end %>
-</table>
+<script>
+    $(document).ready(function(){
+        $(".buttonClass").on('click',function(){
+            var daysback = document.getElementById("days").value;
+
+            var parent = document.getElementById("up")
+
+                $.get('/viewReportAj', {daysback: daysback},
+                        function(data,status){
+                            parent.innerHTML=data;
+                        });
+
+            $(this).on('click',function(ev){
+                ev.preventDefault();
+            });
+
+            return false;
+        });
+
+    });
+</script>

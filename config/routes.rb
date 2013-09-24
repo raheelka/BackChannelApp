@@ -4,6 +4,7 @@ Auth::Application.routes.draw do
 
   get "all_post" => "posts#index", :as => "all_post"
   get "votedup" => "posts#votedup", :as => "votedup"
+  get "viewReportAj" => "users#viewReportAj", :as => "viewReportAj"
   get "new_post" => "posts#new", :as => "new_post"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"

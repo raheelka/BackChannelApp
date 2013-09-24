@@ -1,11 +1,12 @@
 <table id="viewReportTable" class="viewReportClass" border=1>
-  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th></tr>
+  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th><th>Votes Received</th></tr>
   <% @posts.each do |poster| %>
       <tr>
         <td><%= poster.category %></td>
         <td><%= poster.tag %></td>
         <td><%=poster.content %></td>
         <td><%=poster.user.first_name %> <%=poster.user.last_name %></td>
+        <td><%=number_of_votes_for_post(poster)  %></td>
       </tr>
   <% end %>
 </table>

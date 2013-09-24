@@ -13,7 +13,7 @@
           <%end%>
       <% if (current_user!=nil &&  (current_user!=poster.user))%>
           <div ><a href="" id="<%= poster.id %>" name="up" class="votes">
-            <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> likes</a></div></td></tr>
+            <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></div></td></tr>
       <%end%>
 
   <% end %>

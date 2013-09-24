@@ -95,7 +95,7 @@ class PostsController < ApplicationController
 
     @upvotes=Vote.find_all_by_post_id(params[:id]).count
 
-    render :text => "<div class='up'></div>"+@upvotes.to_s+" likes"
+    render :text => "<div class='up'></div>"+@upvotes.to_s+" Votes"
   end
 
 end

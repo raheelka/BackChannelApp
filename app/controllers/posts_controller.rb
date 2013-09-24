@@ -85,4 +85,17 @@ class PostsController < ApplicationController
 
   end
 
+  def votedup
+
+    @vote=Vote.new
+    @vote.post_id = params[:id]
+    @vote.user_id = current_user.id
+    puts @vote
+    @vote.save
+
+    @upvotes=Vote.find_all_by_post_id(params[:id]).count
+
+    render :text => "<div class='up'></div>"+@upvotes.to_s+" likes"
+  end
+
 end

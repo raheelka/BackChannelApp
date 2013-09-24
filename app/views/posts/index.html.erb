@@ -10,7 +10,33 @@
           <% if (current_user!=nil &&  (current_user==poster.user || current_user==admin_user || current_user==super_admin_user))%>
               <%= link_to 'Edit', edit_post_path(poster) %>
               <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %>
-          <%end%></td></tr>
+          <%end%>
+      <% if (current_user!=nil &&  (current_user!=poster.user))%>
+          <div ><a href="" id="<%= poster.id %>" name="up" class="votes">
+            <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> likes</a></div></td></tr>
+      <%end%>
 
   <% end %>
 </table>
+
+<script>
+    $(document).ready(function(){
+        $(".votes").one('click',function(){
+            var id = $(this).attr("id");
+            var name = $(this).attr("name");
+            var parent = $(this)
+            if (name=='up'){
+                $.get('/votedup', {id: id},
+                        function(data,status){
+                            parent.html(data);
+                        });
+            }
+            $(this).on('click',function(ev){
+                ev.preventDefault();
+            });
+
+            return false;
+        });
+
+    });
+</script>

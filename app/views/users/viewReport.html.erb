@@ -1,6 +1,12 @@
 <head>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %></head>
+<%= form_tag({controller: "users", action: "viewReport"}, method: "post") do %>
+    <%= label_tag(:q, "Search for posts :") %>
+    <%= text_field_tag(:q) %> days back
+    <%= submit_tag("Search") %>
+<% end %>
+
 <h1>Showing All Posts</h1>
 <table border=1>
   <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th></tr>

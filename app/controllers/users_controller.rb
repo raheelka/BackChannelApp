@@ -47,7 +47,14 @@ class UsersController < ApplicationController
   end
 
   def viewReport
-    @posts=Post.where({ created_at: (Time.zone.now.beginning_of_day)..Time.zone.now.end_of_day})
+    # This is to get posts some days back
+    require 'date'
+    now = Date.today
+    ten_days_ago = (now - params[:q].to_i)
+
+    @posts=Post.where({ created_at: ten_days_ago..Time.zone.now.end_of_day})
+
+
   end
 
 

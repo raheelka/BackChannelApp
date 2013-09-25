@@ -14,11 +14,13 @@
                 <%= text_field_tag "comment" %>
                 <%= submit_tag "Submit comment"  %>
             <% end  %>
-
+          <fieldset>
+            <legend>Comments</legend>
           <ol>
             <% @comments.each do |comment| %>
                 <% if comment.post_id==poster.id %>
-                    <li><%=comment.content  %> - <%=User.find(comment.user_id).first_name  %></li>
+                    <li><%=comment.content  %> --
+                      <i><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></i></li>
                     <% if (current_user!=nil &&  (current_user==comment.user || current_user==admin_user || current_user==super_admin_user))%>
                     <%= button_to "Edit Comment", {:action => :editComment, :id => comment} %>
                     <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment} %>
@@ -28,6 +30,7 @@
             <% end %>
 
           </ol>
+          </fieldset>
 
 
         </td>

@@ -4,6 +4,7 @@ Auth::Application.routes.draw do
 
   get "all_post" => "posts#index", :as => "all_post"
   get "votedup" => "posts#votedup", :as => "votedup"
+  get "saveComment" => "posts#saveComment", :as => "saveComment"
   get "viewReportAj" => "users#viewReportAj", :as => "viewReportAj"
   get "new_post" => "posts#new", :as => "new_post"
   get "log_in" => "sessions#new", :as => "log_in"
@@ -17,6 +18,7 @@ Auth::Application.routes.draw do
   post "posts/search"
   get "users/viewReport"
   post "users/viewReport"
+  post "posts/deleteComment"
   root :to => "users#new"
   resources :users
   resources :sessions

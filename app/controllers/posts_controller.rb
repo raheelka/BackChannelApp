@@ -22,6 +22,7 @@ class PostsController < ApplicationController
 
   def index
     @posts=Post.all
+    @comments=Comment.all
   end
 
   def edit
@@ -96,6 +97,27 @@ class PostsController < ApplicationController
     @upvotes=Vote.find_all_by_post_id(params[:id]).count
 
     render :text => "<div class='up'></div>"+@upvotes.to_s+" Votes"
+  end
+
+  def saveComment
+    @comment=Comment.new
+    @comment.user_id=current_user.id
+    @comment.post_id = params[:pid].to_i
+    @comment.content = params[:cont]
+
+    @comment.save
+     @posts=Post.all
+    textMsg= @comment.content+"- "+current_user.first_name
+    render :text => textMsg
+  end
+
+  def deleteComment
+    @comment= Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice]="Comment deleted"
+    redirect_to root_path
+
+
   end
 
 end

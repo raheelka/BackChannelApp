@@ -100,22 +100,23 @@ class PostsController < ApplicationController
   end
 
   def saveComment
+
+
     @comment=Comment.new
     @comment.user_id=current_user.id
-    @comment.post_id = params[:pid].to_i
-    @comment.content = params[:cont]
-
+    @comment.post_id = params[:id].to_i
+    @comment.content = params[:comment]
     @comment.save
-     @posts=Post.all
-    textMsg= @comment.content+"- "+current_user.first_name
-    render :text => textMsg
+
+    redirect_to :action => "index"
+
   end
 
   def deleteComment
     @comment= Comment.find(params[:id])
     @comment.destroy
     flash[:notice]="Comment deleted"
-    redirect_to root_path
+    redirect_to :action => "index"
 
 
   end

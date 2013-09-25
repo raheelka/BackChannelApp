@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :super_admin_user
   helper_method :all_cats
   helper_method :number_of_votes_for_post
+  helper_method :all_who_voted
 
   private
   def current_user
@@ -48,6 +49,18 @@ class ApplicationController < ActionController::Base
 
   def number_of_votes_for_post(post)
     @voteCount=Vote.find_all_by_post_id(post).count
+  end
+
+  def all_who_voted(post)
+    @allWhoVoted= Vote.where(:post_id => post)
+    allVoters =String.new
+
+    @allWhoVoted.each do |voter|
+       allVoters= allVoters+User.find(voter.user_id).first_name+"||"
+    end
+
+    allVoters.to_s
+
   end
 
 end

@@ -39,6 +39,7 @@ class PostsController < ApplicationController
 
   def search
 
+    @comments=Comment.all
     if params[:selectSearch] == "searchContent"
        @posts = Array.new
        Post.all.each do

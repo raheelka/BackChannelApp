@@ -118,6 +118,18 @@ class PostsController < ApplicationController
     flash[:notice]="Comment deleted"
     redirect_to :action => "index"
 
+  end
+
+  def editComment
+    @comment = Comment.find(params[:id])
+  end
+
+  def updateComment
+    @comment=Comment.find(params[:id])
+    @comment.content=params[:content]
+    if @comment.save
+    redirect_to :action => "index"
+    end
 
   end
 

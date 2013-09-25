@@ -19,7 +19,10 @@
             <% @comments.each do |comment| %>
                 <% if comment.post_id==poster.id %>
                     <li><%=comment.content  %> - <%=User.find(comment.user_id).first_name  %></li>
+                    <% if (current_user!=nil &&  (current_user==comment.user || current_user==admin_user || current_user==super_admin_user))%>
+                    <%= button_to "Edit Comment", {:action => :editComment, :id => comment} %>
                     <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment} %>
+                    <% end %>
                 <% end %>
 
             <% end %>

@@ -5,6 +5,9 @@ Auth::Application.routes.draw do
   get "all_post" => "posts#index", :as => "all_post"
   get "votedup" => "posts#votedup", :as => "votedup"
   post "saveComment" => "posts#saveComment", :as => "saveComment"
+
+  post "comments/update" => "comments#update", :as => "update"
+
   get "viewReportAj" => "users#viewReportAj", :as => "viewReportAj"
   get "new_post" => "posts#new", :as => "new_post"
   get "log_in" => "sessions#new", :as => "log_in"
@@ -12,6 +15,9 @@ Auth::Application.routes.draw do
   get "all_users" => "users#alluserdata", :as => "all_users"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "users/createAdmin"
+
+  post "posts/editComment"
+
   post "users/saveAdmin"
   post "users/promoteToAdmin"
   post "users/revokeAdmin"
@@ -25,4 +31,5 @@ Auth::Application.routes.draw do
   resources :sessions
   resources :posts
   resources :category_reps
+  resources :comments
 end

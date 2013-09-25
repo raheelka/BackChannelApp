@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924230457) do
+ActiveRecord::Schema.define(version: 20130925193859) do
 
   create_table "category_reps", force: true do |t|
     t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comment_votes", force: true do |t|
+    t.integer  "comment_id"
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

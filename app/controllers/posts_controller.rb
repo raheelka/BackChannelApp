@@ -100,6 +100,23 @@ class PostsController < ApplicationController
     render :text => "<div class='up'></div>"+@upvotes.to_s+" Votes"
   end
 
+  def  votedCommentUp
+
+    @comment=Comment.find(params[:id])
+    pid=@comment.post_id
+    @commentVote=CommentVote.new
+    @commentVote.comment_id=params[:id]
+    @commentVote.user_id=current_user.id
+    @commentVote.post_id=pid
+
+    @commentVote.save
+    @upVotesComment=CommentVote.find_all_by_comment_id(params[:id]).count
+
+    render :text => "<div class='upComment'></div>"+@upVotesComment.to_s+" Votes"
+
+  end
+
+
   def saveComment
 
 

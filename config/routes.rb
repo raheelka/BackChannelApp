@@ -4,6 +4,7 @@ Auth::Application.routes.draw do
 
   get "all_post" => "posts#index", :as => "all_post"
   get "votedup" => "posts#votedup", :as => "votedup"
+  get "votedCommentUp" => "posts#votedCommentUp", :as => "votedCommentUp"
   post "saveComment" => "posts#saveComment", :as => "saveComment"
 
   post "comments/update" => "comments#update", :as => "update"

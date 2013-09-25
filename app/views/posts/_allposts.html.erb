@@ -21,10 +21,20 @@
                 <% if comment.post_id==poster.id %>
                     <li><%=comment.content  %> --
                       <i><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></i></li>
+
+                    <!--Here is the likes for the comments -->
+                    <% if (current_user!=nil &&  (current_user!=comment.user))%>
+                        <div ><a href="" id="<%= comment.id %>" name="upComment" class="votesComment">
+                          <div class='upComment'></div> <%= CommentVote.find_all_by_comment_id(comment.id).count %> Votes</a></div>
+                    <% end %>
+                    <!-- ---------------------------------------- -->
+
                     <% if (current_user!=nil &&  (current_user==comment.user || current_user==admin_user || current_user==super_admin_user))%>
                     <%= button_to "Edit Comment", {:action => :editComment, :id => comment} %>
                     <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment} %>
                     <% end %>
+
+
                 <% end %>
 
             <% end %>
@@ -57,6 +67,28 @@
             var parent = $(this)
             if (name=='up'){
                 $.get('/votedup', {id: id},
+                        function(data,status){
+                            parent.html(data);
+                        });
+            }
+            $(this).on('click',function(ev){
+                ev.preventDefault();
+            });
+
+            return false;
+        });
+
+
+
+    });
+
+    $(document).ready(function(){
+        $(".votesComment").one('click',function(){
+            var id = $(this).attr("id");
+            var name = $(this).attr("name");
+            var parent = $(this)
+            if (name=='upComment'){
+                $.get('/votedCommentUp', {id: id},
                         function(data,status){
                             parent.html(data);
                         });

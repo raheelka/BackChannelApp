@@ -46,12 +46,17 @@
         </td>
         <td><%=poster.user.first_name %> <%=poster.user.last_name %>
           <% if (current_user!=nil &&  (current_user==poster.user || current_user==admin_user || current_user==super_admin_user))%>
-              <%= link_to 'Edit', edit_post_path(poster) %>
-              <%= button_to 'Delete', poster, method: :delete, :confirm => 'Are you sure?' %>
+              <%= link_to 'Edit this Post', edit_post_path(poster) %>
+              <%= button_to 'Delete this Post', poster, method: :delete, :confirm => 'Are you sure?' %>
           <%end%>
           <% if (current_user!=nil &&  (current_user!=poster.user))%>
               <div ><a href="" id="<%= poster.id %>" name="up" class="votes">
-                <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></div></td>
+                <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></div>
+              <% if alreadyVotedForPost(current_user.id,poster.id) %>
+              <b>You Voted this up</b>
+              <% end %>
+
+              </td>
           <%end%>
            <td><%=all_who_voted(poster)%></td></tr>
   <% end %>

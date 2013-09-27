@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   helper_method :boost_this_post_by_x
   helper_method :decay_all_posts_by_x_except
   helper_method :decay_all_posts_by_x
+  helper_method :alreadyVotedForPost
 
   private
   def current_user
@@ -59,7 +60,7 @@ class ApplicationController < ActionController::Base
     allVoters =String.new
 
     @allWhoVoted.each do |voter|
-       allVoters= allVoters+User.find(voter.user_id).first_name+"||"
+       allVoters= allVoters+User.find(voter.user_id).first_name+"##"
     end
 
     allVoters.to_s
@@ -89,6 +90,10 @@ class ApplicationController < ActionController::Base
       thisPost.weight=thisPost.weight-x
       thisPost.save
     end
+  end
+
+  def alreadyVotedForPost(user,post)
+     @voter=Vote.find_by(:user_id => user, :post_id => post)
   end
 
 end

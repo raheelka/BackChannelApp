@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     decay_all_posts_by_x(50)
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to root_path
+      redirect_to :action => "index"
     else
       render 'post'
     end
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def destroy
    @post= Post.find(params[:id])
     @post.destroy
-    redirect_to root_path
+   redirect_to :action => "index"
   end
 
   def index
@@ -34,7 +34,7 @@ class PostsController < ApplicationController
        @post=Post.find(params[:id])
       if @post.update(params[:post].permit(:title, :content, :category, :tag))
         flash[:success] = "Post Edited Successfully!"
-        redirect_to root_path
+        redirect_to :action => "index"
       end
   end
 

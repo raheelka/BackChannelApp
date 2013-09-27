@@ -31,7 +31,7 @@
 
   <%= form_tag url_for(:controller => :posts, :action => :search) do %>
       <tr><td align="right" style="position: absolute; left: 500px; top:40px">   <%= search_field_tag :s %>
-        <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent','searchCategory'])%>
+        <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent','searchCategory']), :onchange =>"submit()" %>
       </td> </tr>
 
       </p>

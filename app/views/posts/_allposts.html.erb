@@ -8,6 +8,7 @@
         <td><%= poster.category %></td>
         <td><%= poster.tag %></td>
         <td>
+          <u><%= poster.title %> </u><br/>
           <%=poster.content %>   <br/>
 
             <%= form_tag url_for(:controller => :posts, :action => :saveComment, :id => poster.id) do %>

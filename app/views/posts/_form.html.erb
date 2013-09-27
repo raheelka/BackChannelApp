@@ -1,7 +1,9 @@
 <%= form_for @post do |f| %>
     <div class="field">
-      <%= f.text_area :category %>
-      <%= f.text_area :content %>
+     Title : <%= f.text_field :title  %><br/>
+     Content : <%= f.text_area :content %><br/>
+     Category : <%= f.text_area :category %> <br/>
+      Tag : <%= f.text_field :tag  %>
     </div>
     <div class="actions">
       <%= f.submit "Submit" %>

@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(params[:post].permit(:content, :category, :tag))
     @post.weight = 1000
+    decay_all_posts_by_x(50)
     if @post.save
       flash[:success] = "Post created!"
       redirect_to root_path
@@ -21,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts=Post.order('created_at DESC').all
+    @posts=Post.order('weight DESC').all
     @comments=Comment.all
   end
 
@@ -97,6 +98,10 @@ class PostsController < ApplicationController
     @vote.user_id = current_user.id
     puts @vote
     @vote.save
+    # This will boost the current post being liked by 10 and decay all others by 5
+    boost_this_post_by_x(params[:id],10)
+    decay_all_posts_by_x_except(params[:id],5)
+      #---------------------------------------------
      end
     @upvotes=Vote.find_all_by_post_id(params[:id]).count
 
@@ -136,6 +141,9 @@ class PostsController < ApplicationController
     @comment.post_id = params[:id].to_i
     @comment.content = params[:comment]
     @comment.save
+
+    boost_this_post_by_x(params[:id].to_i,20)
+    decay_all_posts_by_x_except(params[:id].to_i,10)
 
     redirect_to :action => "index"
 

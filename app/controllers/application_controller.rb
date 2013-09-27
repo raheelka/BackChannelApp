@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
   helper_method :all_cats
   helper_method :number_of_votes_for_post
   helper_method :all_who_voted
+  helper_method :boost_this_post_by_x
+  helper_method :decay_all_posts_by_x_except
+  helper_method :decay_all_posts_by_x
 
   private
   def current_user
@@ -61,6 +64,31 @@ class ApplicationController < ActionController::Base
 
     allVoters.to_s
 
+  end
+
+  def decay_all_posts_by_x_except(post_id,x)
+    @allPostsToDecay=Post.all
+    @allPostsToDecay.each do |thisPost|
+      if(thisPost.id!=post_id)
+        thisPost.weight=thisPost.weight-x
+        thisPost.save
+      end
+
+    end
+  end
+
+  def boost_this_post_by_x(post_id,x)
+    @thisPostToBoost=Post.find(post_id)
+    @thisPostToBoost.weight=@thisPostToBoost.weight+x
+    @thisPostToBoost.save
+  end
+
+  def decay_all_posts_by_x(x)
+    @allPostsToDecay=Post.all
+    @allPostsToDecay.each do |thisPost|
+      thisPost.weight=thisPost.weight-x
+      thisPost.save
+    end
   end
 
 end

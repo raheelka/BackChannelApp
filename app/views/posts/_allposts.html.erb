@@ -2,7 +2,7 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 <table border=1>
-  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th></tr>
+  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th><th>All who voted</th></tr>
   <% @posts.each do |poster| %>
       <tr>
         <td><%= poster.category %></td>
@@ -51,9 +51,9 @@
           <%end%>
           <% if (current_user!=nil &&  (current_user!=poster.user))%>
               <div ><a href="" id="<%= poster.id %>" name="up" class="votes">
-                <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></div></td></tr>
+                <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></div></td>
           <%end%>
-
+           <td><%=all_who_voted(poster)%></td></tr>
   <% end %>
 </table>
 

@@ -48,7 +48,13 @@ class PostsController < ApplicationController
          if post.content.upcase.index(params[:s].upcase)        # Doing this to compare without case
            @posts << post
          end
+         if post.title
+            if post.title.upcase.index(params[:s].upcase)
+              @posts << post
+            end
+         end
        end
+       @posts=@posts.uniq
     elsif  params[:selectSearch] == "searchCategory"
       @posts = Array.new
       Post.all.each do
@@ -82,6 +88,7 @@ class PostsController < ApplicationController
 
       end
     end
+
 
 
 

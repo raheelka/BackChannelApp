@@ -54,7 +54,15 @@ class PostsController < ApplicationController
             end
          end
        end
+
+       Comment.all.each do |comment|                          # Searches by comment wohoooo!!! :)
+         if comment.content.upcase.index(params[:s].upcase)
+           @posts << comment.post
+         end
+       end
+
        @posts=@posts.uniq
+
     elsif  params[:selectSearch] == "searchCategory"
       @posts = Array.new
       Post.all.each do

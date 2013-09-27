@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c947ea-7080-4916-8cfd-4c6c8b440390" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="auth.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -11,7 +12,7 @@
     <file path="/schema.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1378856195903" ignored="false" />
     <file path="/20130910234655_update_users.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1378859300639" ignored="false" />
     <file path="/new.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380316900491" ignored="false" />
-    <file path="/posts_controller.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380322310020" ignored="false" />
+    <file path="/posts_controller.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380323241081" ignored="false" />
     <file path="/routes.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380139671704" ignored="false" />
     <file path="/application.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380320593543" ignored="false" />
     <file path="/index.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380068974039" ignored="false" />
@@ -65,7 +66,7 @@
       <file leaf-file-name="posts_controller.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="25" selection-start="1329" selection-end="1329" vertical-scroll-proportion="0.6394316">
+            <state line="57" column="97" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.45293072">
               <folding />
             </state>
           </provider>
@@ -800,7 +801,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="25" selection-start="1329" selection-end="1329" vertical-scroll-proportion="0.6394316">
+        <state line="57" column="97" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.45293072">
           <folding />
         </state>
       </provider>

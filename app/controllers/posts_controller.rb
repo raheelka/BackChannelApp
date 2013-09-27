@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts=Post.all
+    @posts=Post.order('created_at DESC').all
     @comments=Comment.all
   end
 
@@ -89,12 +89,15 @@ class PostsController < ApplicationController
 
   def votedup
 
+    @alreadyVotedPost=Vote.find_by(:user_id => current_user.id, :post_id => params[:id])
+
+    if @alreadyVotedPost == nil
     @vote=Vote.new
     @vote.post_id = params[:id]
     @vote.user_id = current_user.id
     puts @vote
     @vote.save
-
+     end
     @upvotes=Vote.find_all_by_post_id(params[:id]).count
 
     render :text => "<div class='up'></div>"+@upvotes.to_s+" Votes"
@@ -103,13 +106,21 @@ class PostsController < ApplicationController
   def  votedCommentUp
 
     @comment=Comment.find(params[:id])
+
+    @alreadyVotedComment=CommentVote.find_by(:user_id => current_user.id, :comment_id => params[:id])
+
+
     pid=@comment.post_id
+
+    if @alreadyVotedComment==nil
     @commentVote=CommentVote.new
     @commentVote.comment_id=params[:id]
     @commentVote.user_id=current_user.id
     @commentVote.post_id=pid
 
     @commentVote.save
+    end
+
     @upVotesComment=CommentVote.find_all_by_comment_id(params[:id]).count
 
     render :text => "<div class='upComment'></div>"+@upVotesComment.to_s+" Votes"

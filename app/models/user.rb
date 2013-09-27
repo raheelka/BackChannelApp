@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :comment_votes, :dependent => :destroy
+  has_many :votes, :dependent => :destroy
   validates_confirmation_of :password
 
   validates_presence_of :email

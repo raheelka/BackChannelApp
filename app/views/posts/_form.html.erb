@@ -2,7 +2,7 @@
     <div class="field">
      Title : <%= f.text_field :title  %><br/>
      Content : <%= f.text_area :content %><br/>
-     Category : <%= f.text_area :category %> <br/>
+     Category : <%= f.select :category,options_for_select(all_cats,@post.category) %> <br/>
       Tag : <%= f.text_field :tag  %>
     </div>
     <div class="actions">

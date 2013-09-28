@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d3c947ea-7080-4916-8cfd-4c6c8b440390" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" afterPath="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" />
     </list>
     <ignored path="auth.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +20,7 @@
     <file path="/20130912191016_add_category_to_posts.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1379013047478" ignored="false" />
     <file path="/search.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1379281723387" ignored="false" />
     <file path="/Dummy.txt" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380288909272" ignored="false" />
-    <file path="/application_controller.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380295741323" ignored="false" />
+    <file path="/application_controller.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380347654627" ignored="false" />
     <file path="/sessions_controller.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1379803287995" ignored="false" />
     <file path="/20130915033049_add_admin_to_users.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1379782993901" ignored="false" />
     <file path="$PROJECT_DIR$/log/development.log" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1379216255407" ignored="false" />
@@ -34,7 +35,7 @@
     <file path="/viewReport.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380037872252" ignored="false" />
     <file path="/post.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380063955880" ignored="false" />
     <file path="/_viewReportPar.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380320227415" ignored="false" />
-    <file path="/_allposts.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380332240095" ignored="false" />
+    <file path="/_allposts.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380348531998" ignored="false" />
     <file path="/_allcomments.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380067637766" ignored="false" />
     <file path="/editComment.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380127985272" ignored="false" />
     <file path="/updateComment.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380123515389" ignored="false" />
@@ -80,6 +81,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="39" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="new.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/new.html.erb">
           <provider selected="true" editor-type-id="text-editor">
@@ -101,7 +111,7 @@
       <file leaf-file-name="_allposts.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/posts/_allposts.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="25" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.69573283">
+            <state line="25" column="35" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.5703422">
               <folding />
             </state>
           </provider>
@@ -129,15 +139,6 @@
         <entry file="file://$PROJECT_DIR$/app/views/posts/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state line="4" column="81" selection-start="228" selection-end="228" vertical-scroll-proportion="-2.5">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create.html.erb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/posts/create.html.erb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -177,7 +178,6 @@
         <option value="$PROJECT_DIR$/app/models/comment_vote.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130927211934_add_title_to_posts.rb" />
         <option value="$PROJECT_DIR$/app/views/posts/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/posts/edit.html.erb" />
@@ -185,6 +185,7 @@
         <option value="$PROJECT_DIR$/app/views/users/_viewReportPar.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" />
       </list>
     </option>
@@ -322,6 +323,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -616,7 +635,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3182193" sideWeight="0.6710098" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3182193" sideWeight="0.6710098" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -696,13 +715,6 @@
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="41" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="36" selection-start="576" selection-end="576" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -798,9 +810,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="39" selection-start="616" selection-end="616" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/posts/_allposts.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="25" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.69573283">
+        <state line="25" column="35" selection-start="1097" selection-end="1097" vertical-scroll-proportion="0.5703422">
           <folding />
         </state>
       </provider>

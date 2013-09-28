@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :decay_all_posts_by_x_except
   helper_method :decay_all_posts_by_x
   helper_method :alreadyVotedForPost
+  helper_method :alreadyVotedForComment
 
   private
   def current_user
@@ -94,6 +95,10 @@ class ApplicationController < ActionController::Base
 
   def alreadyVotedForPost(user,post)
      @voter=Vote.find_by(:user_id => user, :post_id => post)
+  end
+
+  def alreadyVotedForComment(user,comment)
+    @voterForComment=CommentVote.find_by(:user_id => user, :comment_id =>comment)
   end
 
 end

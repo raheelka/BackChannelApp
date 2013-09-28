@@ -21,7 +21,11 @@
             <% @comments.each do |comment| %>
                 <% if comment.post_id==poster.id %>
                     <li><%=comment.content  %> --
-                      <i><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></i></li>
+                      <i><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></i>
+                    <% if current_user.id==comment.user_id %>
+                     <b> (You) </b>
+                      <% end %>
+                    </li>
 
                     <!--Here is the likes for the comments -->
                     <% if (current_user!=nil &&  (current_user!=comment.user))%>
@@ -31,8 +35,12 @@
                     <!-- ---------------------------------------- -->
 
                     <% if (current_user!=nil &&  (current_user==comment.user || current_user==admin_user || current_user==super_admin_user))%>
+                        <% if alreadyVotedForComment(current_user.id,comment.id) %>
+                            <b>You Voted up this comment</b>
+                        <% end %>
                     <%= button_to "Edit Comment", {:action => :editComment, :id => comment} %>
                     <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment} %>
+
                     <% end %>
 
 
@@ -58,7 +66,7 @@
               <div ><a href="" id="<%= poster.id %>" name="up" class="votes">
                 <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></div>
               <% if alreadyVotedForPost(current_user.id,poster.id) %>
-              <b>You Voted this up</b>
+              <b>You Voted up this post</b>
               <% end %>
 
               </td>

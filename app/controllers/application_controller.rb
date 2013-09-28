@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   helper_method :decay_all_posts_by_x
   helper_method :alreadyVotedForPost
   helper_method :alreadyVotedForComment
+  helper_method :moveAllStuffToAnonymousUser
+
 
   private
   def current_user
@@ -99,6 +101,41 @@ class ApplicationController < ActionController::Base
 
   def alreadyVotedForComment(user,comment)
     @voterForComment=CommentVote.find_by(:user_id => user, :comment_id =>comment)
+  end
+
+  def moveAllStuffToAnonymousUser(user)
+
+    @anonymousUser=User.find_by(:username => "anonymous")
+
+    Post.all.each do |post|
+      if (post.user_id==user)
+       post.user_id=@anonymousUser.id
+       post.save
+      end
+    end
+
+    Comment.all.each do |comment|
+      if(comment.user_id==user)
+        comment.user_id=@anonymousUser.id
+        comment.save
+      end
+    end
+
+    Vote.all.each do |vote|
+      if(vote.user_id==user)
+        vote.user_id=@anonymousUser.id
+        vote.save
+      end
+    end
+
+    CommentVote.all.each do |commentVote|
+      if(commentVote.user_id==user)
+        commentVote.user_id=@anonymousUser.id
+        commentVote.save
+      end
+    end
+
+
   end
 
 end

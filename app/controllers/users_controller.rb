@@ -81,6 +81,9 @@ class UsersController < ApplicationController
 
   def destroy
     @user= User.find(params[:id])
+
+    moveAllStuffToAnonymousUser(@user.id)
+
     if(current_user==@user)
     session[:user_id]=nil
     else

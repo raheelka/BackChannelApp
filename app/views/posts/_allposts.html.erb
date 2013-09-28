@@ -21,8 +21,8 @@
             <% @comments.each do |comment| %>
                 <% if comment.post_id==poster.id %>
                     <li><%=comment.content  %> --
-                      <i><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></i>
-                    <% if current_user.id==comment.user_id %>
+                      <i><b><u><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></u></b></i>
+                    <% if current_user && current_user.id==comment.user_id %>
                      <b> (You) </b>
                       <% end %>
                     </li>

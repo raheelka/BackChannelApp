@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d3c947ea-7080-4916-8cfd-4c6c8b440390" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" afterPath="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" />
     </list>
     <ignored path="auth.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,7 +34,7 @@
     <file path="/viewReport.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380037872252" ignored="false" />
     <file path="/post.rb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380063955880" ignored="false" />
     <file path="/_viewReportPar.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380320227415" ignored="false" />
-    <file path="/_allposts.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380317381477" ignored="false" />
+    <file path="/_allposts.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380332240095" ignored="false" />
     <file path="/_allcomments.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380067637766" ignored="false" />
     <file path="/editComment.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380127985272" ignored="false" />
     <file path="/updateComment.html.erb" changelist="d3c947ea-7080-4916-8cfd-4c6c8b440390" time="1380123515389" ignored="false" />
@@ -63,10 +62,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="posts_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="posts_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="97" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.45293072">
+            <state line="61" column="9" selection-start="1519" selection-end="1519" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -99,10 +98,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_allposts.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_allposts.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/posts/_allposts.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="42" selection-start="393" selection-end="393" vertical-scroll-proportion="-6.25">
+            <state line="50" column="25" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.69573283">
               <folding />
             </state>
           </provider>
@@ -181,12 +180,12 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130927211934_add_title_to_posts.rb" />
         <option value="$PROJECT_DIR$/app/views/posts/new.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" />
         <option value="$PROJECT_DIR$/app/views/posts/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/posts/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/users/_viewReportPar.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/posts_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/posts/_allposts.html.erb" />
       </list>
     </option>
   </component>
@@ -785,13 +784,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/posts/_allposts.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="42" selection-start="393" selection-end="393" vertical-scroll-proportion="-6.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="33" column="129" selection-start="1411" selection-end="1411" vertical-scroll-proportion="-20.625">
@@ -801,7 +793,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/posts_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="97" selection-start="1402" selection-end="1402" vertical-scroll-proportion="0.45293072">
+        <state line="61" column="9" selection-start="1519" selection-end="1519" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/posts/_allposts.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="25" selection-start="2231" selection-end="2231" vertical-scroll-proportion="0.69573283">
           <folding />
         </state>
       </provider>

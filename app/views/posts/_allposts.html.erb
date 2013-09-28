@@ -47,6 +47,10 @@
         </td>
         <td><%=poster.user.first_name %> <%=poster.user.last_name %>
           <% if (current_user!=nil &&  (current_user==poster.user || current_user==admin_user || current_user==super_admin_user))%>
+              <%if current_user==poster.user%>
+                  <i><b>(OWNER)</b></i>
+              <br/><%= Vote.find_all_by_post_id(poster.id).count %> Votes Received  <br/>
+               <%end%>
               <%= link_to 'Edit this Post', edit_post_path(poster) %>
               <%= button_to 'Delete this Post', poster, method: :delete, :confirm => 'Are you sure?' %>
           <%end%>

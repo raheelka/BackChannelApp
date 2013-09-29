@@ -2,7 +2,7 @@
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %></head>
 <h1>Showing All Users</h1>
-<table border=1>
+<table border=1 style="table-layout: fixed;">
   <tr><th>First Name</th> <th>Last Name</th> <th>Email </th>
     <th>Username</th> <th>Password Hash </th> <th>Password Salt</th>
     <th>Type</th><th>Actions</th></tr>
@@ -10,7 +10,7 @@
       <% if user.username!="anonymous" %>
       <tr> <td><%= user.first_name %></td> <td><%=user.last_name %> </td>
         <td><%=user.email %></td> <td><%=user.username %> </td>
-        <td><%=user.password_hash %></td> <td><%=user.password_salt %> </td>
+        <td style='max-width:300px;word-wrap:break-word;'><%=user.password_hash %></td> <td style='max-width:300px;word-wrap:break-word;'><%=user.password_salt %> </td>
         <td><%=user.user_type %></td>
 
         <td>

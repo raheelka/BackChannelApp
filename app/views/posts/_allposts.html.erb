@@ -38,8 +38,8 @@
                         <% if alreadyVotedForComment(current_user.id,comment.id) %>
                             <b>You Voted up this comment</b>
                         <% end %>
-                    <%= button_to "Edit Comment", {:action => :editComment, :id => comment} %>
-                    <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment} %>
+                    <%= button_to "Edit Comment", {:action => :editComment, :id => comment},:class => 'btn btn-mini' %>
+                    <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment},:class => 'btn btn-mini btn-danger' %>
 
                     <% end %>
 
@@ -59,8 +59,8 @@
                   <i><b>(OWNER)</b></i>
               <br/><%= Vote.find_all_by_post_id(poster.id).count %> Votes Received  <br/>
                <%end%>
-              <%= link_to 'Edit this Post', edit_post_path(poster) %>
-              <%= button_to 'Delete this Post', poster, method: :delete, :confirm => 'Are you sure?' %>
+              <%= link_to 'Edit this Post', edit_post_path(poster),:class => 'btn btn-mini' %>
+              <%= button_to 'Delete this Post', poster, method: :delete, :confirm => 'Are you sure?',:class => 'btn btn-mini btn-danger' %>
           <%end%>
           <% if (current_user!=nil &&  (current_user!=poster.user))%>
               <div ><a href="" id="<%= poster.id %>" name="up" class="votes">

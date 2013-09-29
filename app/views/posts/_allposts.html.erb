@@ -10,11 +10,12 @@
         <td>
           <u><%= poster.title %> </u><br/>
           <%=poster.content %>   <br/>
-
+             <% if current_user %>
             <%= form_tag url_for(:controller => :posts, :action => :saveComment, :id => poster.id) do %>
                 <%= text_field_tag "comment" %>
                 <%= submit_tag "Submit comment"  %>
             <% end  %>
+              <% end %>
           <fieldset>
             <legend>Comments</legend>
           <ol>

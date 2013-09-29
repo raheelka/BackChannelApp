@@ -1,12 +1,15 @@
 <%= form_for @post do |f| %>
     <div class="field">
-     <div> Title : <%= f.text_field :title %></div>
-     <div> Content : <br/><%= f.text_area :content %> </div>
-  Choose a category : <%=f.select :category,options_for_select(all_cats) %>
+      <div class="container">
+     <div> Title<br/> <%= f.text_field :title %></div>
+     <div> Content<br/><%= f.text_area :content %> </div>
+  Choose a category<br/><%=f.select :category,options_for_select(all_cats) %>
 
     <div> Or Enter a Tag :<br/> <%= f.text_area :tag %></div>
-    </div>
+
     <div class="actions">
       <%= f.submit "Submit" %>
+    </div>
+      </div>
     </div>
 <% end %>

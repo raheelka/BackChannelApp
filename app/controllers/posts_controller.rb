@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def index
     @posts=Post.order('weight DESC').all
-    @comments=Comment.all
+    @comments=Comment.order('created_at').all
   end
 
   def edit

@@ -1,6 +1,7 @@
 <%= javascript_include_tag "rails" %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+<div class="container">
 <table border=1>
   <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th><th>All who voted</th></tr>
   <% @posts.each do |poster| %>
@@ -75,6 +76,7 @@
            <td><%=all_who_voted(poster)%></td></tr>
   <% end %>
 </table>
+</div>
 
 <script>
 

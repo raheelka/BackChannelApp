@@ -5,8 +5,8 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(params[:post].permit(:title, :content, :category, :tag))
-    @post.weight = 1000
-    decay_all_posts_by_x(50)
+    @post.weight = 4000
+    decay_all_posts_by_x(60)
     if @post.save
       flash[:success] = "Post created!"
       redirect_to :action => "index"

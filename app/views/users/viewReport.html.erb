@@ -1,13 +1,13 @@
 <head>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %></head>
-
+<div class="container">
 Search for posts from past <input type="text" id="days" class="daysClass"> days
 <input type=button id="reportButton" class="buttonClass" value="search">
 
 <h1>Showing All Posts</h1>
 <div class='up' id="up"></div>
-
+</div>
 <script>
     $(document).ready(function(){
         $(".buttonClass").on('click',function(){

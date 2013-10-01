@@ -1,5 +1,5 @@
-<h1>Create an Admin</h1>
-
+<h1 class="container">Create an Admin</h1>
+ <div class="container">
 <%= form_for @user, url: {action: "saveAdmin"} do |f| %>
     <% if @user.errors.any? %>
         <div class="error_messages">
@@ -12,28 +12,29 @@
         </div>
     <% end %>
     <p>
-      <%= f.label :first_name %><br />
+      <%= f.label :first_name %>
       <%= f.text_field :first_name %>
     </p>
     <p>
-      <%= f.label :last_name %><br />
+      <%= f.label :last_name %>
       <%= f.text_field :last_name %>
     </p>
     <p>
-      <%= f.label :username %><br />
+      <%= f.label :username %>
       <%= f.text_field :username %>
     </p>
     <p>
-      <%= f.label :email %><br />
+      <%= f.label :email %>
       <%= f.text_field :email %>
     </p>
     <p>
-      <%= f.label :password %><br />
+      <%= f.label :password %>
       <%= f.password_field :password %>
     </p>
     <p>
-      <%= f.label :password_confirmation %>  <br/>
+      <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %>
     </p>
     <p class="button"><%= f.submit %></p>
 <% end %>
+ </div>

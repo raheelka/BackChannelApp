@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user=User.new(params[:user].permit(:first_name, :last_name, :username, :email, :password, :password_confirmation))
     @user.user_type="user"
     if @user.save
-      redirect_to root_url, :notice => "Signed up!"
+      redirect_to root_url, :notice => "User Successfully Signed up! Log in to continue"
     else
     render "new"
     end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     @user=User.new(params[:user].permit(:first_name, :last_name, :username, :email, :password, :password_confirmation))
     @user.user_type="admin"
     if @user.save
-      redirect_to root_url, :notice => "Admin Created!"
+      redirect_to root_url, :notice => "Admin Successfully Created!"
     else
       render "new"
     end
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
     session[@user.id] = nil   # This should be done by calling the destroy method of sessions controller :(
     end
     @user.destroy
-    redirect_to :action => "alluserdata", :notice => "User deleted!"
+    redirect_to :action => "alluserdata", :notice => "User successfully deleted!"
   end
 
 

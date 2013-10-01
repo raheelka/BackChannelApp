@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     @user.user_type="admin"
     if @user.save
-      redirect_to root_url, :notice => "Promoted to Admin!"
+      redirect_to :action => "alluserdata", :notice => "Promoted to Admin!"
     end
   end
 
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
     @user.user_type="user"
     if @user.save
-      redirect_to root_url, :notice => "Revoked Admin Rights!"
+      redirect_to :action => "alluserdata", :notice => "Revoked Admin Rights!"
     end
   end
 
@@ -90,7 +90,7 @@ class UsersController < ApplicationController
     session[@user.id] = nil   # This should be done by calling the destroy method of sessions controller :(
     end
     @user.destroy
-    redirect_to root_path, :notice => "User deleted!"
+    redirect_to :action => "alluserdata", :notice => "User deleted!"
   end
 
 

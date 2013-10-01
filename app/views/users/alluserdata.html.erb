@@ -23,6 +23,7 @@
 
               <% if current_user==super_admin_user %>
                   <% if user.user_type=="admin" %>
+                      <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
                       <%= button_to "Revoke Admin Rights", {:action => "revokeAdmin", id: user} %>
                   <% end %>
               <% end %>

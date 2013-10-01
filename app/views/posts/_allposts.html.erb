@@ -9,8 +9,8 @@
         <td><%= poster.category %></td>
         <td><%= poster.tag %></td>
         <td>
-          <u><%= poster.title %> </u><br/>
-          <%=poster.content %>   <br/>
+          <u>Title</u> : <%= poster.title %> <br/>
+          <u>Content</u> : <%=poster.content %>   <br/>
              <% if current_user %>
             <%= form_tag url_for(:controller => :posts, :action => :saveComment, :id => poster.id) do %>
                 <%= text_field_tag "comment" %>

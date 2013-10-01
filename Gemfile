@@ -52,6 +52,7 @@ end
   gem "therubyracer"
   gem "less-rails"
 
+  gem "rspec-rails", :group => [:development, :test]
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -64,3 +65,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+  gem "capybara"

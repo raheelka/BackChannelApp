@@ -5,8 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(params[:post].permit(:title, :content, :category, :tag))
-    @post.weight = 4000
-    decay_all_posts_by_x(60)
+    @post.weight = findMaxWeight()
     if @post.save
       flash[:success] = "Post created!"
       redirect_to :action => "index"
@@ -115,7 +114,7 @@ class PostsController < ApplicationController
     @vote.save
     # This will boost the current post being liked by 20 and decay all others by 10
     boost_this_post_by_x(params[:id],20)
-    decay_all_posts_by_x_except(params[:id],10)
+    #decay_all_posts_by_x_except(params[:id],20)
       #---------------------------------------------
      end
     @upvotes=Vote.find_all_by_post_id(params[:id]).count
@@ -158,7 +157,7 @@ class PostsController < ApplicationController
     @comment.save
 
     boost_this_post_by_x(params[:id].to_i,20)
-    decay_all_posts_by_x_except(params[:id].to_i,10)
+   # decay_all_posts_by_x_except(params[:id].to_i,20)
 
     redirect_to :action => "index"
 

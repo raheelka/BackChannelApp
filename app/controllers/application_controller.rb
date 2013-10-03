@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   helper_method :alreadyVotedForPost
   helper_method :alreadyVotedForComment
   helper_method :moveAllStuffToAnonymousUser
+  helper_method :findMaxWeight
 
 
   private
@@ -135,6 +136,22 @@ class ApplicationController < ActionController::Base
       end
     end
 
+
+  end
+
+  def findMaxWeight()
+    max =0
+    if(Post.count > 0)
+    Post.all.each  do |post|
+      if(post.weight > max)
+        max= post.weight
+      end
+    end
+    max = max+10
+  else
+    max=4000
+    end
+    return max
 
   end
 

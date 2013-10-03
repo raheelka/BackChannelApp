@@ -113,9 +113,9 @@ class PostsController < ApplicationController
     @vote.user_id = current_user.id
     puts @vote
     @vote.save
-    # This will boost the current post being liked by 10 and decay all others by 5
-    boost_this_post_by_x(params[:id],10)
-    decay_all_posts_by_x_except(params[:id],5)
+    # This will boost the current post being liked by 20 and decay all others by 10
+    boost_this_post_by_x(params[:id],20)
+    decay_all_posts_by_x_except(params[:id],10)
       #---------------------------------------------
      end
     @upvotes=Vote.find_all_by_post_id(params[:id]).count

@@ -1,5 +1,5 @@
 <table id="viewReportTable" class="viewReportClass" border=1>
-  <tr><th>Category</th><th>Tag</th><th>Title</th> <th>Content</th> <th>Posted By </th><th>Votes Received</th><th>All who voted</th> <th>Post Weight</th></tr>
+  <tr><th>Category</th><th>Tag</th><th>Title</th> <th>Content</th> <th>Posted By </th><th>Votes Received</th><th>All who voted</th><th>Comments Received</th><th>All who commented</th> <th>Post Weight</th></tr>
   <% @posts.each do |poster| %>
       <tr>
         <td><%= poster.category %></td>
@@ -9,6 +9,9 @@
         <td><%=poster.user.first_name %> <%=poster.user.last_name %></td>
         <td><%=number_of_votes_for_post(poster)  %></td>
         <td><%=all_who_voted(poster)  %></td>
+        <td><%=number_of_comments_for_post(poster)  %></td>
+        <td><%=all_who_commented(poster)  %></td>
+
         <td><%=poster.weight  %></td>
       </tr>
   <% end %>

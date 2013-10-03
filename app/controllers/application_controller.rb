@@ -9,7 +9,9 @@ class ApplicationController < ActionController::Base
   helper_method :super_admin_user
   helper_method :all_cats
   helper_method :number_of_votes_for_post
+  helper_method :number_of_comments_for_post
   helper_method :all_who_voted
+  helper_method :all_who_commented
   helper_method :boost_this_post_by_x
   helper_method :decay_all_posts_by_x_except
   helper_method :decay_all_posts_by_x
@@ -59,6 +61,10 @@ class ApplicationController < ActionController::Base
     @voteCount=Vote.find_all_by_post_id(post).count
   end
 
+  def number_of_comments_for_post(post)
+    @commentCount=Comment.find_all_by_post_id(post).count
+  end
+
   def all_who_voted(post)
     @allWhoVoted= Vote.where(:post_id => post)
     allVoters =String.new
@@ -68,6 +74,18 @@ class ApplicationController < ActionController::Base
     end
 
     allVoters.to_s
+
+  end
+
+  def all_who_commented(post)
+    @allWhoCommented= Comment.where(:post_id => post)
+    allCommenters =String.new
+
+    @allWhoCommented.each do |commentor|
+      allCommenters= allCommenters+User.find(commentor.user_id).first_name+"##"
+    end
+
+    allCommenters.to_s
 
   end
 

@@ -65,7 +65,8 @@
 
   <%= form_tag url_for(:controller => :posts, :action => :search) do %>
       <tr><td align="right" style="position: absolute; left: 500px; top:40px"> Search :  <%= search_field_tag :s %>
-        <%= select_tag "selectSearch", options_for_select(['searchUser','searchContent','searchCategory']), :onchange =>"submit()" %>
+        <%= select_tag "selectSearch", options_for_select(['searchContent','searchTag','searchCategory','searchUser'])%>
+        <input type="button" value="search" onclick="submit()">
       </td> </tr>
 
       </p>

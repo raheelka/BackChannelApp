@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
        @posts=@posts.uniq
 
-    elsif  params[:selectSearch] == "searchCategory"
+    elsif  (params[:selectSearch] == "searchCategory" || params[:selectSearch] == "searchTag")
       @posts = Array.new
       Post.all.each do
       |post|
@@ -86,7 +86,7 @@ class PostsController < ApplicationController
       @posts = Array.new
       User.all.each do
       |user|
-          if user.first_name.upcase.index(params[:s].upcase) || user.last_name.upcase.index(params[:s].upcase)        # Doing this to compare without case
+          if user.first_name.upcase.index(params[:s].upcase) || user.last_name.upcase.index(params[:s].upcase) || user.username.upcase.index(params[:s].upcase)      # Doing this to compare without case
             all_posts_of_user = Post.where(user_id: user).all
              all_posts_of_user.each do
                |user_post|

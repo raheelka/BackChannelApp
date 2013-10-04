@@ -62,7 +62,7 @@ class PostsController < ApplicationController
 
        @posts=@posts.uniq
 
-    elsif  (params[:selectSearch] == "searchCategory" || params[:selectSearch] == "searchTag")
+    elsif  (params[:selectSearch] == "searchCategory")
       @posts = Array.new
       Post.all.each do
       |post|
@@ -72,6 +72,13 @@ class PostsController < ApplicationController
         end
         end
 
+      end
+      @posts=@posts.uniq
+
+    elsif  (params[:selectSearch] == "searchTag")
+      @posts = Array.new
+      Post.all.each do
+         |post|
         if post.tag
           if post.tag.upcase.index(params[:s].upcase)      # Doing this to compare without case
             @posts << post
@@ -80,6 +87,8 @@ class PostsController < ApplicationController
 
       end
       @posts=@posts.uniq
+
+
 
     else      # Search by user (For now simply user's first name)
       @posts = Array.new

@@ -14,11 +14,15 @@ class UsersController < ApplicationController
   end
 
   def alluserdata
+    if current_user
     if current_user.user_type!="admin" && current_user.user_type!="superadmin"
       redirect_to root_url, :notice => "You are not authorized"
     else
       @users=User.all
     end
+    else
+      redirect_to root_url, :notice => "You are not authorized"
+      end
 
   end
 
@@ -85,12 +89,14 @@ class UsersController < ApplicationController
     moveAllStuffToAnonymousUser(@user.id)
 
     if(current_user==@user)
-    session[:user_id]=nil
+      session[:user_id]=nil
+      redirect_to root_url
     else
-    session[@user.id] = nil   # This should be done by calling the destroy method of sessions controller :(
+      session[@user.id] = nil   # This should be done by calling the destroy method of sessions controller :(
+      redirect_to :action => "alluserdata", :notice => "User successfully deleted!"
     end
-    @user.destroy
-    redirect_to :action => "alluserdata", :notice => "User successfully deleted!"
+      @user.destroy
+
   end
 
 

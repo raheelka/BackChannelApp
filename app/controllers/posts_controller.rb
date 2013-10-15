@@ -193,4 +193,45 @@ class PostsController < ApplicationController
 
   end
 
+  def searchAuto
+
+    result= Array.new
+
+    if(params[:searchType]!="searchUser")
+    Post.all.each do |post|
+      if(params[:term])
+
+        if(params[:searchType]=="searchTag")
+          if post.tag.upcase.index(params[:term].upcase)
+            result << post.tag
+          end
+        end
+
+        if(params[:searchType]=="searchCategory")
+          if post.category.upcase.index(params[:term].upcase)
+            result << post.category
+          end
+        end
+      end
+    end
+    end
+
+    if(params[:searchType]=="searchUser")
+      User.all.each do |user|
+        if(params[:term])
+          if user.first_name.upcase.index(params[:term].upcase)
+            result << user.first_name
+          end
+        end
+      end
+    end
+
+    result=result.uniq
+    respond_to do |format|
+      format.html
+      format.json { render :json => result.to_json }
+    end
+
+  end
+
 end

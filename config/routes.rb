@@ -27,6 +27,10 @@ Auth::Application.routes.draw do
   post "users/viewReport"
   post "posts/deleteComment"
 
+  resources :posts do
+    get 'searchAuto', :on => :collection
+  end
+
   root :to => "users#new"
   resources :users
   resources :sessions

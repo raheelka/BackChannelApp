@@ -1,5 +1,6 @@
 <head><%= javascript_include_tag "rails" %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tag %></head>
 <h1>Showing Posts by Search Filter</h1>
 <%= render partial: "allposts" %>

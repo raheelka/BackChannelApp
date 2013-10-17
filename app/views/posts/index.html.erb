@@ -1,9 +1,6 @@
-<head><%= javascript_include_tag "rails" %>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "autoLoad" %>
-  <%= csrf_meta_tag %></head>
-
+<head>
+  <%= javascript_include_tag "autoLoad", "data-turbolinks-track" => true  %>
+</head>
 <h1 class="container">Showing All Posts</h1>
 
 <%= render partial: "allposts" %>

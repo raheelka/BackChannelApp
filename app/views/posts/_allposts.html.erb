@@ -1,7 +1,7 @@
 
 <div class="container">
 <table border=1>
-  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By </th><th>All who voted</th></tr>
+  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By / Vote for Post </th><th>All who voted</th></tr>
   <% @posts.each do |poster| %>
       <tr>
         <td><%= poster.category %></td>
@@ -31,13 +31,22 @@
                     <% if (current_user!=nil &&  (current_user!=comment.user))%>
                         <div ><a href="" id="<%= comment.id %>" name="upComment" class="votesComment" style="color:rgb(0,0,255)">
                           <div class='upComment'></div> <%= CommentVote.find_all_by_comment_id(comment.id).count %> Votes</a></div>
+                        <% if alreadyVotedForComment(current_user.id,comment.id) %>
+                            <b>You Voted up this comment</b>
+                         <% else %>
+                        <b><div id="upVotedCommentDisplayMessage<%= comment.id%>"></div></b>
+                            <% end %>
+
                     <% end %>
                     <!-- ---------------------------------------- -->
 
                     <% if (current_user!=nil &&  (current_user==comment.user || current_user==admin_user || current_user==super_admin_user))%>
-                        <% if alreadyVotedForComment(current_user.id,comment.id) %>
-                            <b>You Voted up this comment</b>
-                        <% end %>
+
+                        <%if current_user==comment.user%>
+
+                            <font color="F0C00C"><%= CommentVote.find_all_by_comment_id(comment.id).count %> Votes Received for your comment</font>
+                        <%end%>
+
                     <%= button_to "Edit Comment", {:action => :editComment, :id => comment},:class => 'btn btn-mini' %>
                     <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment},:class => 'btn btn-mini btn-danger' %>
 
@@ -67,8 +76,9 @@
                 <div class='up'></div> <%= Vote.find_all_by_post_id(poster.id).count %> Votes</a></u></div>
               <% if alreadyVotedForPost(current_user.id,poster.id) %>
               <b>You Voted up this post</b>
-              <% end %>
-
+              <% else %>
+              <b><div id="upVotedPostDisplayMessage<%= poster.id%>"></div></b>
+               <% end %>
               </td>
           <%end%>
            <td><%=all_who_voted(poster)%></td></tr>
@@ -88,6 +98,7 @@
                 $.get('/votedup', {id: id},
                         function(data,status){
                             parent.html(data);
+                            $('#upVotedPostDisplayMessage'+id).html("You Voted up this post");
                         });
             }
             $(this).on('click',function(ev){
@@ -110,6 +121,7 @@
                 $.get('/votedCommentUp', {id: id},
                         function(data,status){
                             parent.html(data);
+                            $('#upVotedCommentDisplayMessage'+id).html("You Voted up this comment");
                         });
             }
             $(this).on('click',function(ev){

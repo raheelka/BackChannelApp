@@ -9,8 +9,14 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
   validates_uniqueness_of :email
+  validates_format_of :email, :with => /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/
   validates_presence_of :username
   validates_uniqueness_of :username
+
+
+  validates :password, :presence => true,
+            :length => {:within => 6..40},
+            :on => :create
 
   def encrypt_password
     if password.present?

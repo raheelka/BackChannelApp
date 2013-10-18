@@ -121,10 +121,10 @@ class PostsController < ApplicationController
     @vote.user_id = current_user.id
     puts @vote
     @vote.save
-    # This will boost the current post being liked by 20 and decay all others by 10
-    boost_this_post_by_x(params[:id],20)
-    #decay_all_posts_by_x_except(params[:id],20)
-      #---------------------------------------------
+    # This will boost the current posts weight by the maxweight+5
+    boost_weight=findMaxWeight - Post.find(@vote.post_id).weight + 5
+    boost_this_post_by_x(params[:id],boost_weight)
+
      end
     @upvotes=Vote.find_all_by_post_id(params[:id]).count
 
@@ -165,8 +165,9 @@ class PostsController < ApplicationController
     @comment.content = params[:comment]
     @comment.save
 
-    boost_this_post_by_x(params[:id].to_i,20)
-   # decay_all_posts_by_x_except(params[:id].to_i,20)
+    boost_weight=findMaxWeight-Post.find(@comment.post_id).weight+5
+    boost_this_post_by_x(params[:id].to_i,boost_weight)
+
 
     redirect_to :action => "index"
 

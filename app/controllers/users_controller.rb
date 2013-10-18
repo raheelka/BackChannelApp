@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user=User.new(params[:user].permit(:first_name, :last_name, :username, :email, :password, :password_confirmation))
     @user.user_type="user"
     if @user.save
-      redirect_to root_url, :notice => "User Successfully Signed up! Log in to continue"
+      redirect_to log_in_path, :notice => "User Successfully Signed up! Log in to continue"
     else
     render "new"
     end

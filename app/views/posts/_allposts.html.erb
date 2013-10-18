@@ -1,7 +1,8 @@
-
+<link href="bootstrap.css" rel="stylesheet" type="text/css">
 <div class="container">
-<table border=1>
-  <tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By / Vote for Post </th><th>All who voted</th></tr>
+<table class="table table-striped table table-bordered table table-condensed" border="solid">
+  <thead><tr><th>Category</th><th>Tag</th> <th>Content</th> <th>Posted By / Vote for Post </th><th>All who voted</th></tr>  </thead>
+  <tbody>
   <% @posts.each do |poster| %>
       <tr>
         <td><%= poster.category %></td>
@@ -11,20 +12,23 @@
           <u>Content</u> : <%=poster.content %>   <br/>
              <% if current_user %>
             <%= form_tag url_for(:controller => :posts, :action => :saveComment, :id => poster.id) do %>
-                <%= text_field_tag "comment" %>
-                <%= submit_tag "Submit comment"  %>
+                <%= text_field_tag "comment",nil, placeholder: 'Comment' %>
+                <%= submit_tag "Submit comment",:class => "btn btn-mini btn-primary"  %>
             <% end  %>
               <% end %>
           <fieldset>
-            <legend>Comments</legend>
+            <h6>Comments</h6>
           <ol>
             <% @comments.each do |comment| %>
                 <% if comment.post_id==poster.id %>
-                    <li><%=comment.content  %> --
-                      <i><b><u><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></u></b></i>
-                    <% if current_user && current_user.id==comment.user_id %>
-                     <b> (You) </b>
-                      <% end %>
+                    <li><b><u><%=User.find(comment.user_id).first_name %> <%=User.find(comment.user_id).last_name %></u></b>
+
+                      <% if current_user && current_user.id==comment.user_id %>
+                          <b> (You) </b>
+                      <% end %>  :
+
+                      <i><%=comment.content  %> </i>
+
                     </li>
 
                     <!--Here is the likes for the comments -->
@@ -32,9 +36,9 @@
                         <div ><a href="" id="<%= comment.id %>" name="upComment" class="votesComment" style="color:rgb(0,0,255)">
                           <div class='upComment'></div> <%= CommentVote.find_all_by_comment_id(comment.id).count %> Votes</a></div>
                         <% if alreadyVotedForComment(current_user.id,comment.id) %>
-                            <b>You Voted up this comment</b>
+                            <h6>You Voted up this comment</h6>
                          <% else %>
-                        <b><div id="upVotedCommentDisplayMessage<%= comment.id%>"></div></b>
+                        <h6><div id="upVotedCommentDisplayMessage<%= comment.id%>"></div></h6>
                             <% end %>
 
                     <% end %>
@@ -42,13 +46,14 @@
 
                     <% if (current_user!=nil &&  (current_user==comment.user || current_user==admin_user || current_user==super_admin_user))%>
 
-                        <%if current_user==comment.user%>
-
+                       <div> <%if current_user==comment.user%>
                             <font color="F0C00C"><%= CommentVote.find_all_by_comment_id(comment.id).count %> Votes Received for your comment</font>
                         <%end%>
-
-                    <%= button_to "Edit Comment", {:action => :editComment, :id => comment},:class => 'btn btn-mini' %>
-                    <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment},:class => 'btn btn-mini btn-danger' %>
+                       </div>
+                        <div style="float: left; width: auto;">
+                            <%= button_to "Edit Comment", {:action => :editComment, :id => comment},:class => 'btn btn-mini' %>
+                        </div>
+                        <%= button_to "Delete Comment", {:action => :deleteComment,:id => comment},:class => 'btn btn-mini btn-danger' %>
 
                     <% end %>
 
@@ -67,7 +72,7 @@
               <%if current_user==poster.user%>
                   <i><b>(OWNER)</b></i>
               <br/><font color="F0C00C"><%= Vote.find_all_by_post_id(poster.id).count %> Votes Received</font>  <br/>
-               <%end%>
+               <%end%><br/>
               <%= link_to 'Edit this Post', edit_post_path(poster),:class => 'btn btn-mini' %>
               <%= button_to 'Delete this Post', poster, method: :delete, :confirm => 'Are you sure?',:class => 'btn btn-mini btn-danger' %>
           <%end%>
@@ -83,6 +88,7 @@
           <%end%>
            <td><%=all_who_voted(poster)%></td></tr>
   <% end %>
+  </tbody>
 </table>
 </div>
 

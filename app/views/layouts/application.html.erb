@@ -51,7 +51,7 @@
   </div>
 </div>
 <!----------------------------------------------------------------------------->
-<body style="padding-top: 60px;">
+<body style="padding-top: 60px; background: #e5e5e5">
 
  <div class="container">
    <% if current_user %>
@@ -64,9 +64,9 @@
 
 
   <%= form_tag url_for(:controller => :posts, :action => :search) do %>
-      <tr><td align="right" style="position: absolute; left: 500px; top:40px"> Search :  <%= search_field_tag :s %>
+      <tr><td align="right" style="position: absolute; left: 500px; top:40px"><%= search_field_tag :s,nil,placeholder: 'Search' %>
         <%= select_tag "selectSearch", options_for_select(['searchTag','searchCategory','searchContent','searchUser'], :selected => params[:selectSearch])%>
-        <input type="button" value="search" onclick="submit()">
+        <input type="button" value="search" class="btn btn-default" onclick="submit()">
       </td> </tr>
 
       </p>

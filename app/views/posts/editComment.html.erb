@@ -1,10 +1,10 @@
 <%= form_for @comment, url: {controller: "comments", action: "update"} do |f| %>
     <div class="container">
-    Your Comment<br/> <%= f.text_area :content %>
+  <h6>  Your Comment</h6> <%= f.text_area :content %>
 
     <%=f.hidden_field :id %>
     <div class="actions">
-      <%= f.submit "Edit Comment" %>
+      <%= f.submit "Edit Comment", class: "btn" %>
     </div>
         </div>
 <% end %>

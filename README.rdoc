@@ -1,78 +1,172 @@
-CSC/ECE 517, Fall 2013
-Program 1: Backchannel app
-Due Friday, September 27
+Object Oriented Language and Systems - CSC 517
+Backchannel Application
+_________________________________________________________________________________________
 
-This semester, as you know, we’re employing a backchannel during class in CSC/ECE 517.  However, as we use Live Question, we have realized that it has some important limitations.
-You can’t search for posts.
-Users do not need to log in to post a question, leaving the system open for potential spam.
-There’s no easy way to figure out how many posts an individual has done. There is no defined “handle” or “account”.
-The topics with maximum number of votes appear on top. This leads to the following problem:
-A topic posted at the very beginning of the course can receive a large number of votes. That topic will continue to remain on top even though it becomes less relevant as we progress in the course. In short, the relevance of a topic is decided only by the number of votes and not by time.
-Admin functionality is extremely limited. No per-user or aggregate statistics are collected.
+URL for Application deployed on Heroku
 
-Using Ruby on Rails, we will create an app to address these shortcomings.
+http://aqueous-gorge-2108.herokuapp.com/
+_______________________________________________________________________________________
 
-Features
-Anyone can create an account by filling out a form that comes up on the homepage of the app.
-Any user with an account can post. A category must be associated with each post; students can select from categories created by the administrator. Students are also welcome to create and use their own tags.
-Anyone (account or not) can search by user or content or category or tag, by using the Search box on the homepage. Also, (s)he can see all posts associated with that category when (s)he searches by category. This way if the category is homework1 user can see all posts associated with homework1.
-Any logged-in user can edit/delete their own post/comment.
-Any logged-in user can “up vote” any post or comment.
-The system maintains a count of votes for each post.
-When the system displays a post or comment, next to the post or comment should be the number of votes.
-You cannot vote up your own posts or comment.
-You cannot vote up the same post or comment more than once.
-Any logged-in user can reply to a post (but not to a reply; i.e., only to a depth of 1).
-                  a.   A user can also vote up a reply (by someone else).
-The “most active” questions are displayed at the top. “Most active” is determined by the combined number of votes on the posts and comments on that post, as well as time elapsed.  For example, you can assign each question a fixed weight, which decays over time. Use this weight along with the number of votes to calculate the final metric which decides the most active questions.  Feel free to design your own metric, along these general lines.  For example, you may wish to use a metric which eventually decays to 0, at which time the question is hidden.
-If a user logs in as an admin, (s)he sees a different interface from what non-admins see.
-There should be a ‘super’ admin in system that his role of admin cannot be removed. There should be code to handle that this user cannot be deleted
-Administrators can create other admin accounts.
-An administrator can delete his/her own account, but no one other admin’s.
-Administrators can see the list of users with their credentials
-Administrators can delete
-posts
-users
-View reports on post activity during certain time period, including number of votes for each post such that it is possible to use this report to assign grades. For example, an admin can view reports from past 10/15/... days.
-An administrator can create categories for posts.  .
-Tables
-Tables must not be created directly in SQLite. Instead, you must use the db:migrate functionality of rails to create your database tables. Recall that Rails creates three versions of each db: production, testing, and development.  You should have a test target that populates the database with sufficient sample data to allow for testing. You should also have a production target that initializes the database in an empty state. The use of the development target is left up to you (you don’t have to submit one).
+Login Details for Super Admin /  Super Admin credentials
 
-We expect your application to have at least the following tables:
-users
-posts
-votes (this is a join table between users and posts)
-category
-Testing
-You must submit unit, functional and integration tests for all classes.  The tests must cover all important branches of the code.  You may use Test::Unit or, for extra credit, RSpec.  If you use one of the GUI testing frameworks (such as Webrat) covered in Lecture 9, you will receive 10% extra credit.
+username: superadmin
+password: superadmin123
+_______________________________________________________________________________________
 
-Software Requirements
-You are required to use the following versions:
-Ruby 1.9.3
-Rails 3.x (and associated dependencies). Do not use Rails 2.x for this project.
-SQLite 3.7.2 (on Windows, place the DLL and DEF file in C:\Ruby192\bin)
+Team Members
+1. Raheel Kazi (rkazi)
+2. Saylee Mhatre (semhatr2)
+3. Shachi Khare (skhare)
+__________________________________________________________________________________________
 
-Do not use any additional Ruby Gems without explicit approval from  csc517-sup@wolfware.ncsu.edu.  During the course of the project, you will be assigned a port number. Your Ruby on Rails application must run using the following command:
+Test Framework
+1. RSpec
+________________________________________________________________________________________
 
-ruby script/server server -p port
+Extra credit work
 
-where port is your assigned port. Until you are assigned a port you can use the default port of 3000. During server initialization, you will be presented with a message similar to the following:
+1. Search includes Autocomplete feature using jQuery
+2. Voting is performed using Ajax
+3. Viewing of Report is done using Ajax
+4. RSPEC framework used.
 
-=> Rails 3 application starting on http://0.0.0.0:3001
+________________________________________________________________________________________
+Other Notes
 
-You can use this to verify that you have the correct version of Rails.
-Deliverables
-Test your code in a VCL image, to be specified later.
-Submit the program code, including internal documentation in the form of comments and a README file via Expertiza.
+1. Application uses AJAX for incrementing Votes as well as for Viewing Reports
+2. Test cases done using RSpec
+3. Super Admin can promote a user to admin as well as create a new admin
+4. Super admin can revoke admin rights
+5. Super admin can delete any user or admin
+6. Admin can only create new admin and promote a user to admin, he cannot revoke admin rights from any admin
+__________________________________________________________________________________________
+Ordering of Posts
 
-For Assignment #1, you need to submit two files to Prog_Assigment_1 for CSC 517 on Wolfware:
-The first is a zip file containing your entire Rails project.
-The second is a README file with the following details:
-Individuals working on this project (include both names and unity IDs).  If you worked alone, just include your name and unity ID
-Which test framework (Test::Unit or RSpec) you are using
-Starting URL for the application.  This should generally be http://127.0.0.1:3000 for execution on your own computer (however, you will be given a different port number to run on the VCL server or if you are using Heroku the starting URL for the deployed app).
-Command(s) to run to start the app
-Other notes (extra credit functionality implemented, limitations, etc.)
+The ordering of posts works as follows.
+1. Initially every post is assigned a weight of 1000.
+2. When a new post is created the maximum weight from all the post’s weights is found and an additional weight of 10 is added and  assigned to the weight of this newly created post.
+3. Similarly when someone likes or comments on a post, the max weight out of all the existing posts is found and an additional weight of 5 is added and assigned to the “liked” or “commented upon” post.
 
-Only one team member should submit the project to Wolfware!  (Yes, even if you resubmit!  Submissions of the same project under multiple IDs just confuse the course staff, and may cause an outdated version of the program to be graded.)
+PS: Since voting is done using Ajax, the posts will not re-order immediately when voted up. It will re-order as soon as you reload the page (This is an ideal case as used in Facebook).
+_________________________________________________________________________________________
+
+REQUIREMENTS
+
+Rails 4.0
+Ruby 2.0
+SQLite 3.7.7
+__________________________________________________________________________________________
+
+Project Running Details
+
+Execute the following after going into the project directory
+
+bundle
+rake db:migrate
+rails s
+__________________________________________________________________________________________
+
+Login Details
+Initially Super Admin is the only admin that exists in the system
+
+Super Admin credentials
+username: superadmin
+password: superadmin123
+
+__________________________________________________________________________________________
+
+Other User credentials
+
+username : jsmith
+password : password
+
+username : knimgaonkar
+password : password
+
+username : skhan
+password : password
+
+username : ydivecha
+password : password
+
+__________________________________________________________________________________________
+
+To run the test cases simply do the following on the terminal
+
+rake db:migrate RAILS_ENV=test
+rspec spec
+
+__________________________________________________________________________________________
+Test Case Description
+
+Unit Test Cases:
+We have created test cases for each of the model classes -
+post_spec.rb
+user_spec.rb
+vote_spec.rb
+
+1) post_spec.rb
+This test cases tests for the presence of all the fields in the post.rb model class - content, user_id, weight, category and tag.
+It valides the following:
+1. The test case fails if user_id field is nil.
+2. The test case fails if content of the post is nil or blank.
+3. The test fails if the content of the test if longer than the enforced character limit.
+
+2) user_spec.rb
+This test case validates the presence of all the fields in the user.rb model class - username, email, first_name, last_name, password, password_confirmation
+and posts.
+
+It validates the following:
+1) The username should not be blank.
+2) The email should not be blank.
+3) The email address should not be already taken.
+4) The password should not be blank.
+5) The password confirmation field should match the password entered.
+
+3) vote_spec.rb
+This test case validates the presence of all the fields in vote.rb model class - user_id, post_id.
+
+It validates the following:
+1) The test fails if the user_id is blank.
+2) The test fails if the post_id is blank.
+
+In order to run the above test cases use the following command:
+bundle exec rspec spec/requests/<model>_spec.rb
+
+
+Functional Test Cases:
+We have written test cases for the Controllers.
+1) posts_controller.rb
+2) sessions_controller.rb
+3) users_controller.rb
+
+1) posts_controller_spec.rb
+This test cases tests the following scenarios:
+1. All the posts get displayed on the all_posts webpage.
+2. When you search for a post from the search box, it displays the correct post.
+3. When you create a new post, the content is updated in the database.
+4. When user creates a new post, the content gets displayed on the all_posts webpage.
+5. When the user edits a post, the database gets updated and the corresponding post is updated on the webpage.
+
+2) users_controller_spec.rb
+The test cases tests for the following scenarios:
+1. Create a new user, the database should get updated.
+2. The webpage should display the corresponding user is created, redirects to correct webpage.
+3. When new admin is created, the database gets updated with the correct values.
+3. When user is deleted, the corresponding entry from the database gets removed.
+
+3) session_controller_spec.rb
+The test cases tests for the following scenarios:
+1. When user is able to login a session is created.
+2. When the user logs out, the session gets destroyed.
+
+Integration Tests:
+We have created the following integration tests:
+1. home_spec.rb - This validates the display on the home page of the application.
+2. posts_spec.rb - This vaidates the display on the posts page of the application.
+3. users_spec.rb - This validates the correct user login. It fails if proper credentials are not entered.
+
+
+
+
 

@@ -167,7 +167,7 @@ class ApplicationController < ActionController::Base
     end
     max = max+10
   else
-    max=4000
+    max=1000
     end
     return max
 

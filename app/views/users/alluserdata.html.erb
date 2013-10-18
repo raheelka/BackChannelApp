@@ -18,21 +18,21 @@
           <% if current_user==admin_user || current_user==super_admin_user  %>
 
               <% if user.user_type!="admin" && user.user_type!="superadmin" %>
-                  <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
-                  <%= button_to "Promote To Admin", {:action => "promoteToAdmin", id: user} %>
+                  <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?',class:'btn btn-mini btn-danger' %>
+                  <%= button_to "Promote To Admin", {:action => "promoteToAdmin", id: user},class:'btn btn-mini btn-success' %>
               <% end %>
 
               <% if current_user==super_admin_user %>
                   <% if user.user_type=="admin" %>
-                      <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
-                      <%= button_to "Revoke Admin Rights", {:action => "revokeAdmin", id: user} %>
+                      <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?',class:'btn btn-mini btn-danger' %>
+                      <%= button_to "Revoke Admin Rights", {:action => "revokeAdmin", id: user},class:'btn btn-mini btn-warning' %>
                   <% end %>
               <% end %>
 
           <% end %>
 
           <% if current_user.id == user.id && user.user_type!="superadmin"%>
-              <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?' %>
+              <%= button_to 'Delete', user, method: :delete, :confirm => 'Are you sure?',class:'btn btn-mini btn-danger' %>
           <% end %>
 
         </td>
